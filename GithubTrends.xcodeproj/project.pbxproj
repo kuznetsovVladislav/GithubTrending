@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F3BA4971FC7171200E4265C /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F3BA4951FC7171200E4265C /* DataModel.xcdatamodeld */; };
+		1F3BA4991FC7174200E4265C /* ServicesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3BA4981FC7174200E4265C /* ServicesProvider.swift */; };
+		1F3BA49C1FC7178C00E4265C /* CoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3BA49B1FC7178C00E4265C /* CoordinatorProtocol.swift */; };
+		1F3BA4A41FC7198C00E4265C /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3BA4A31FC7198B00E4265C /* ViewModelProtocol.swift */; };
+		1F3BA4A61FC719AE00E4265C /* ViewModelContainerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3BA4A51FC719AE00E4265C /* ViewModelContainerProtocol.swift */; };
+		1F3BA4A81FC71AA400E4265C /* ViewModelContainerProtocol+ViewModelDidSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3BA4A71FC71AA400E4265C /* ViewModelContainerProtocol+ViewModelDidSet.swift */; };
+		1F3BA4AA1FC71ED300E4265C /* ReusableViewModelContainerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3BA4A91FC71ED300E4265C /* ReusableViewModelContainerProtocol.swift */; };
+		1F3BA4AC1FC71F3300E4265C /* ReusableViewModelContainerProtocol+ViewModelDidSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3BA4AB1FC71F3300E4265C /* ReusableViewModelContainerProtocol+ViewModelDidSet.swift */; };
+		1F3BA4B01FC7254200E4265C /* BaseViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3BA4AF1FC7254200E4265C /* BaseViewControllerProtocol.swift */; };
+		1F3BA4B51FC7269C00E4265C /* BaseContainerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3BA4B41FC7269C00E4265C /* BaseContainerController.swift */; };
+		1F3BA4B71FC727D800E4265C /* BaseContainerControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3BA4B61FC727D800E4265C /* BaseContainerControllerProtocol.swift */; };
+		1F3BA4B91FC7282400E4265C /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3BA4B81FC7282400E4265C /* BaseViewController.swift */; };
+		1F3BA4BC1FC729BA00E4265C /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3BA4BB1FC729BA00E4265C /* AppCoordinator.swift */; };
 		1F5D16541FC70E7C00A90B29 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F5D16531FC70E7C00A90B29 /* AppDelegate.swift */; };
 		1F5D16591FC70E7C00A90B29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F5D16571FC70E7C00A90B29 /* Main.storyboard */; };
 		1F5D165B1FC70E7C00A90B29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F5D165A1FC70E7C00A90B29 /* Assets.xcassets */; };
@@ -15,6 +28,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F3BA4961FC7171200E4265C /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		1F3BA4981FC7174200E4265C /* ServicesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesProvider.swift; sourceTree = "<group>"; };
+		1F3BA49B1FC7178C00E4265C /* CoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorProtocol.swift; sourceTree = "<group>"; };
+		1F3BA4A31FC7198B00E4265C /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
+		1F3BA4A51FC719AE00E4265C /* ViewModelContainerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelContainerProtocol.swift; sourceTree = "<group>"; };
+		1F3BA4A71FC71AA400E4265C /* ViewModelContainerProtocol+ViewModelDidSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewModelContainerProtocol+ViewModelDidSet.swift"; sourceTree = "<group>"; };
+		1F3BA4A91FC71ED300E4265C /* ReusableViewModelContainerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableViewModelContainerProtocol.swift; sourceTree = "<group>"; };
+		1F3BA4AB1FC71F3300E4265C /* ReusableViewModelContainerProtocol+ViewModelDidSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReusableViewModelContainerProtocol+ViewModelDidSet.swift"; sourceTree = "<group>"; };
+		1F3BA4AF1FC7254200E4265C /* BaseViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewControllerProtocol.swift; sourceTree = "<group>"; };
+		1F3BA4B41FC7269C00E4265C /* BaseContainerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseContainerController.swift; sourceTree = "<group>"; };
+		1F3BA4B61FC727D800E4265C /* BaseContainerControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseContainerControllerProtocol.swift; sourceTree = "<group>"; };
+		1F3BA4B81FC7282400E4265C /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		1F3BA4BB1FC729BA00E4265C /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		1F5D16501FC70E7C00A90B29 /* GithubTrends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubTrends.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F5D16531FC70E7C00A90B29 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1F5D16581FC70E7C00A90B29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -46,10 +72,87 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		1F3BA49A1FC7177E00E4265C /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				1F3BA49B1FC7178C00E4265C /* CoordinatorProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		1F3BA49F1FC718DC00E4265C /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				1F3BA4A01FC7191500E4265C /* Protocols */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		1F3BA4A01FC7191500E4265C /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				1F3BA4A31FC7198B00E4265C /* ViewModelProtocol.swift */,
+				1F3BA4A51FC719AE00E4265C /* ViewModelContainerProtocol.swift */,
+				1F3BA4A91FC71ED300E4265C /* ReusableViewModelContainerProtocol.swift */,
+				1F3BA4A71FC71AA400E4265C /* ViewModelContainerProtocol+ViewModelDidSet.swift */,
+				1F3BA4AB1FC71F3300E4265C /* ReusableViewModelContainerProtocol+ViewModelDidSet.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		1F3BA4AE1FC7253B00E4265C /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				1F3BA4AF1FC7254200E4265C /* BaseViewControllerProtocol.swift */,
+				1F3BA4B61FC727D800E4265C /* BaseContainerControllerProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		1F3BA4B31FC7267D00E4265C /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				1F3BA4B41FC7269C00E4265C /* BaseContainerController.swift */,
+				1F3BA4B81FC7282400E4265C /* BaseViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		1F3BA4BA1FC729A300E4265C /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				1F3BA4BB1FC729BA00E4265C /* AppCoordinator.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		1F3BA4BD1FC72AA200E4265C /* ManagedEntities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ManagedEntities;
+			sourceTree = "<group>";
+		};
+		1F3BA4BF1FC72ACC00E4265C /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				1F3BA4C01FC72AD000E4265C /* Extensions */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		1F3BA4C01FC72AD000E4265C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		1F5D16471FC70E7C00A90B29 = {
 			isa = PBXGroup;
 			children = (
 				1F5D16521FC70E7C00A90B29 /* GithubTrends */,
+				1F5D16531FC70E7C00A90B29 /* AppDelegate.swift */,
 				1F5D16511FC70E7C00A90B29 /* Products */,
 				C9F10631A54198FC9FA43707 /* Pods */,
 				13D4EFFD329EA858BCB95FA8 /* Frameworks */,
@@ -67,14 +170,15 @@
 		1F5D16521FC70E7C00A90B29 /* GithubTrends */ = {
 			isa = PBXGroup;
 			children = (
+				1F3BA4BF1FC72ACC00E4265C /* Common */,
 				1F5D166C1FC70F3B00A90B29 /* Resources */,
 				1F5D166B1FC70F3100A90B29 /* Storyboards */,
 				1F5D16651FC70EB900A90B29 /* Models */,
 				1F5D16661FC70EC800A90B29 /* Services */,
 				1F5D16671FC70ED300A90B29 /* Coordinators */,
+				1F3BA49F1FC718DC00E4265C /* ViewModels */,
 				1F5D16681FC70EDD00A90B29 /* Views */,
 				1F5D166A1FC70EE700A90B29 /* ViewControllers */,
-				1F5D16531FC70E7C00A90B29 /* AppDelegate.swift */,
 			);
 			path = GithubTrends;
 			sourceTree = "<group>";
@@ -82,6 +186,8 @@
 		1F5D16651FC70EB900A90B29 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1F3BA4951FC7171200E4265C /* DataModel.xcdatamodeld */,
+				1F3BA4BD1FC72AA200E4265C /* ManagedEntities */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -89,6 +195,7 @@
 		1F5D16661FC70EC800A90B29 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				1F3BA4981FC7174200E4265C /* ServicesProvider.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -96,6 +203,8 @@
 		1F5D16671FC70ED300A90B29 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
+				1F3BA49A1FC7177E00E4265C /* Protocols */,
+				1F3BA4BA1FC729A300E4265C /* Base */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -110,6 +219,8 @@
 		1F5D166A1FC70EE700A90B29 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				1F3BA4AE1FC7253B00E4265C /* Protocols */,
+				1F3BA4B31FC7267D00E4265C /* Base */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -280,7 +391,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F3BA4A81FC71AA400E4265C /* ViewModelContainerProtocol+ViewModelDidSet.swift in Sources */,
 				1F5D16541FC70E7C00A90B29 /* AppDelegate.swift in Sources */,
+				1F3BA4BC1FC729BA00E4265C /* AppCoordinator.swift in Sources */,
+				1F3BA4B51FC7269C00E4265C /* BaseContainerController.swift in Sources */,
+				1F3BA4A41FC7198C00E4265C /* ViewModelProtocol.swift in Sources */,
+				1F3BA4AA1FC71ED300E4265C /* ReusableViewModelContainerProtocol.swift in Sources */,
+				1F3BA4B91FC7282400E4265C /* BaseViewController.swift in Sources */,
+				1F3BA4B71FC727D800E4265C /* BaseContainerControllerProtocol.swift in Sources */,
+				1F3BA4A61FC719AE00E4265C /* ViewModelContainerProtocol.swift in Sources */,
+				1F3BA4991FC7174200E4265C /* ServicesProvider.swift in Sources */,
+				1F3BA49C1FC7178C00E4265C /* CoordinatorProtocol.swift in Sources */,
+				1F3BA4AC1FC71F3300E4265C /* ReusableViewModelContainerProtocol+ViewModelDidSet.swift in Sources */,
+				1F3BA4B01FC7254200E4265C /* BaseViewControllerProtocol.swift in Sources */,
+				1F3BA4971FC7171200E4265C /* DataModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,6 +591,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1F3BA4951FC7171200E4265C /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1F3BA4961FC7171200E4265C /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 1F3BA4961FC7171200E4265C /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1F5D16481FC70E7C00A90B29 /* Project object */;
 }
