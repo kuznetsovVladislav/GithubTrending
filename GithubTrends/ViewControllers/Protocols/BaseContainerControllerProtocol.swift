@@ -6,8 +6,13 @@
 //  Copyright © 2017 Vlad Kuznetsov. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+enum ApplicationFlow {
+    case auth
+    case main
+}
 
 protocol BaseContainerControllerProtocol {
-    
+    func changeFlow(to flow: ApplicationFlow, animated: Bool) -> UIViewController
 }

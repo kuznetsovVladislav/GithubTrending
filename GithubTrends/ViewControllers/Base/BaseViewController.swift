@@ -14,7 +14,12 @@ class BaseViewController: UIViewController, BaseViewControllerProtocol {
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        printFunction(#function)
+        printRunning(#function)
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        printRunning(#function)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -26,12 +31,12 @@ class BaseViewController: UIViewController, BaseViewControllerProtocol {
     }
     
     deinit {
-        printFunction(#function)
+        printRunning(#function)
     }
     
     // MARK: - Private methods
     
-    private func printFunction(_ function: String) {
+    private func printRunning(_ function: String) {
         print("\(self) \(function)")
     }
 }

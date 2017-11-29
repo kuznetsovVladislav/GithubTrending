@@ -20,10 +20,6 @@ extension BaseViewControllerProtocol where Self: UIViewController {
     func hideIndicator() {
     
     }
-    
-    var baseContainerController: BaseContainerControllerProtocol {
-        return BaseContainerController()
-    }
 }
 
 
