@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+        <array key="HelveticaNeueLights.ttc">
+            <string>HelveticaNeue-Light</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="180" id="KGk-i7-Jjw" customClass="ProfileHeaderTVCell" customModule="GithubTrends" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="180"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="179.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="git-logo-black" translatesAutoresizingMaskIntoConstraints="NO" id="dCl-uo-rSu" customClass="DesignableImageView" customModule="GithubTrends" customModuleProvider="target">
+                        <rect key="frame" x="16" y="16" width="120" height="120"/>
+                        <color key="backgroundColor" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="120" id="SuF-zE-SG6"/>
+                            <constraint firstAttribute="height" constant="120" id="gpm-fc-uZO"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                <color key="value" red="0.86274509803921573" green="0.86274509803921573" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="0.5"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="kuznetsovVladislav" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7c-GU-tPG">
+                        <rect key="frame" x="152" y="65" width="152" height="20"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                        <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="kuznetsovv97@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7yw-8a-R2B">
+                        <rect key="frame" x="16" y="148" width="288" height="20"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                        <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No biography" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVx-cl-5Pq">
+                        <rect key="frame" x="152" y="90" width="152" height="18"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
+                        <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vladislav Kuznetsov" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E7w-h6-3y6">
+                        <rect key="frame" x="152" y="16" width="152" height="43"/>
+                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
+                        <color key="textColor" red="0.19607843137254902" green="0.19607843137254902" blue="0.19607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="7yw-8a-R2B" firstAttribute="top" secondItem="dCl-uo-rSu" secondAttribute="bottom" constant="12" id="6KW-z9-bM7"/>
+                    <constraint firstItem="E7w-h6-3y6" firstAttribute="leading" secondItem="dCl-uo-rSu" secondAttribute="trailing" constant="16" id="KSp-4L-p5p"/>
+                    <constraint firstItem="E7w-h6-3y6" firstAttribute="top" secondItem="dCl-uo-rSu" secondAttribute="top" id="Nc2-Nv-M5l"/>
+                    <constraint firstItem="dCl-uo-rSu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="OBF-nX-0N2"/>
+                    <constraint firstItem="bVx-cl-5Pq" firstAttribute="leading" secondItem="o7c-GU-tPG" secondAttribute="leading" id="Sup-Dv-UbA"/>
+                    <constraint firstItem="o7c-GU-tPG" firstAttribute="trailing" secondItem="E7w-h6-3y6" secondAttribute="trailing" id="Wca-y6-mgg"/>
+                    <constraint firstItem="7yw-8a-R2B" firstAttribute="trailing" secondItem="bVx-cl-5Pq" secondAttribute="trailing" id="b0Q-Xp-fAx"/>
+                    <constraint firstAttribute="trailing" secondItem="E7w-h6-3y6" secondAttribute="trailing" constant="16" id="hl9-xi-j2i"/>
+                    <constraint firstItem="o7c-GU-tPG" firstAttribute="top" secondItem="E7w-h6-3y6" secondAttribute="bottom" constant="6" id="kMg-v9-Odt"/>
+                    <constraint firstItem="dCl-uo-rSu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="khY-dJ-00r"/>
+                    <constraint firstItem="bVx-cl-5Pq" firstAttribute="trailing" secondItem="o7c-GU-tPG" secondAttribute="trailing" id="nae-tH-5ha"/>
+                    <constraint firstItem="7yw-8a-R2B" firstAttribute="leading" secondItem="dCl-uo-rSu" secondAttribute="leading" id="r1w-1b-7zO"/>
+                    <constraint firstItem="o7c-GU-tPG" firstAttribute="leading" secondItem="E7w-h6-3y6" secondAttribute="leading" id="tLQ-o0-xgE"/>
+                    <constraint firstItem="bVx-cl-5Pq" firstAttribute="top" secondItem="o7c-GU-tPG" secondAttribute="bottom" constant="5" id="uK6-nu-qSs"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <point key="canvasLocation" x="34" y="122"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="git-logo-black" width="69" height="69"/>
+    </resources>
+</document>

@@ -72,7 +72,7 @@ final class TrendsViewController: BaseViewController/*, ViewModelContainerProtoc
     override func viewDidLoad() {
         super.viewDidLoad()
         setupController()
-        setupCollectioniew()
+        setupTableView()
         setupSearchController()
     }
 
@@ -87,10 +87,9 @@ final class TrendsViewController: BaseViewController/*, ViewModelContainerProtoc
         navigationItem.rightBarButtonItem = rightItem
         
         _ = refreshControl
-        _ = selectionView
     }
     
-    private func setupCollectioniew() {
+    private func setupTableView() {
         tableView.registerNib(for: TrendingTVCell.self)
         tableView.addInfiniteScroll(handler: { _ in })
     }

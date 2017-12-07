@@ -1,8 +1,8 @@
 //
-//  UIView+IBInspectables.swift
+//  UIImageView+IBInspectable.swift
 //  GithubTrends
 //
-//  Created by Владислав  on 12/7/17.
+//  Created by Владислав  on 12/8/17.
 //  Copyright © 2017 Vlad Kuznetsov. All rights reserved.
 //
 
@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 @IBDesignable
-class DesignableView: UIView {
+class DesignableImageView: UIImageView {
     
     @IBInspectable
     var cornerRadius: CGFloat {
@@ -43,5 +43,3 @@ class DesignableView: UIView {
         }
     }
 }
-
-
