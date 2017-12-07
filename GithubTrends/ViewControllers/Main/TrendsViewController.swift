@@ -13,10 +13,36 @@ import Result
 
 fileprivate enum Constant {
     static let navigationTitle: String = "Trending"
+    static let navigationTitleWhitePopover: String = "Adjust time span"
     static let searchBarPlaceholder: String = "Search by languages"
+    static let cellHeight: CGFloat = 170.0
+    static let popoverHeight: CGFloat = 180.0
+    static let popoverAnimationDuration: TimeInterval = 0.3
 }
 
 final class TrendsViewController: BaseViewController/*, ViewModelContainerProtocol*/ {
+    
+    // MARK: - Types
+    
+    enum TimeSelection: SelectionControllerItemProtocol {
+        case day
+        case week
+        case month
+        case allTime
+        
+        var content: String {
+            switch self {
+            case .day:
+                return "Day"
+            case .week:
+                return "Week"
+            case .month:
+                return "Month"
+            case .allTime:
+                return "All time"
+            }
+        }
+    }
     
     // MARK: - IBOutlets
     
@@ -26,8 +52,12 @@ final class TrendsViewController: BaseViewController/*, ViewModelContainerProtoc
     // MARK: - Variables
     
     private let cellViewModels: MutableProperty<[TrendingCellViewModel]> = .init([])
+    
     private lazy var refreshControl: UIRefreshControl = setupRefreshControl()
+    private lazy var selectionView: SelectionView = setupSelectionView()
     let searchController = UISearchController(searchResultsController: nil)
+    
+    var popoverTopConstraint: NSLayoutConstraint?
     
     var viewModel: TrendingViewModel! {
         didSet {
@@ -57,6 +87,7 @@ final class TrendsViewController: BaseViewController/*, ViewModelContainerProtoc
         navigationItem.rightBarButtonItem = rightItem
         
         _ = refreshControl
+        _ = selectionView
     }
     
     private func setupCollectioniew() {
@@ -76,6 +107,23 @@ final class TrendsViewController: BaseViewController/*, ViewModelContainerProtoc
         let refreshControl = UIRefreshControl()
         tableView.refreshControl = refreshControl
         return refreshControl
+    }
+    
+    private func setupSelectionView() -> SelectionView {
+        let view = SelectionView.instantiateFromNib()
+        let content: [TimeSelection] = [.day, .week, .month, .allTime]
+        view.configure(with: content)
+        view.alpha = 0.0
+        
+        self.view.addSubview(view)
+        view.translatesAutoresizingMaskIntoConstraints = false        
+        popoverTopConstraint =  view.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: -Constant.popoverHeight)
+        popoverTopConstraint?.isActive = true
+        view.leadingAnchor.constraint(equalTo: self.view.leadingAnchor).isActive = true
+        view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor).isActive = true
+        view.heightAnchor.constraint(equalToConstant: Constant.popoverHeight).isActive = true
+        
+        return view
     }
     
     func didSet(_ viewModel: TrendingViewModel, for lifetime: Lifetime) {
@@ -110,7 +158,29 @@ final class TrendsViewController: BaseViewController/*, ViewModelContainerProtoc
     // MARK: - Actions
     
     @objc private func rightItemAction(_ sender: UIBarButtonItem) {
-        
+        guard let popoverTop = popoverTopConstraint else { return }
+        let isShown = popoverTop.constant == 0.0
+        isShown ? hideSelectionPopover(animated: true) : showSelectionPopover(animated: true)
+    }
+    
+    private func showSelectionPopover(animated: Bool = false) {
+        navigationItem.title = Constant.navigationTitleWhitePopover
+        popoverTopConstraint?.constant = 0.0
+        UIView.animate(withDuration: animated ? Constant.popoverAnimationDuration : 0.0, delay: 0.0, options: .curveEaseInOut, animations: {
+            self.view.layoutIfNeeded()
+            self.selectionView.alpha = 1.0
+        }, completion: nil)
+    }
+    
+    private func hideSelectionPopover(animated: Bool = false) {
+        navigationItem.title = Constant.navigationTitle
+        popoverTopConstraint?.constant = -Constant.popoverHeight
+        UIView.animate(withDuration: animated ? Constant.popoverAnimationDuration : 0.0, delay: 0.0, options: .curveEaseInOut, animations: {
+            self.view.layoutIfNeeded()
+        }, completion: nil)
+        UIView.animate(withDuration: animated ? Constant.popoverAnimationDuration / 2.0 : 0.0, delay: animated ? Constant.popoverAnimationDuration / 2.0: 0.0, options: .curveEaseInOut, animations: {
+            self.selectionView.alpha = 0.0
+        }, completion: nil)
     }
 }
 
@@ -134,7 +204,7 @@ extension TrendsViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 170.0
+        return Constant.cellHeight
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -148,3 +218,4 @@ extension TrendsViewController: UISearchResultsUpdating {
         
     }
 }
+
