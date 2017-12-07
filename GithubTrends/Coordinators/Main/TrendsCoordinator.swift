@@ -8,6 +8,7 @@
 
 import UIKit
 import ReactiveSwift
+import ReactiveCocoa
 import Result
 
 final class TrendsCoordinator: BaseCoordinator, CoordinatorProtocol {
@@ -26,9 +27,12 @@ final class TrendsCoordinator: BaseCoordinator, CoordinatorProtocol {
     }
     
     func start() {
-        let controller = containerController.changeFlow(to: .main, animated: shouldChangeFlowAnimated)
-        shouldRemoveFromParent = controller.reactive.lifetime.ended.take(during: reactive.lifetime).mapToVoid()
+        guard let tabBarController = containerController.changeFlow(to: .main, animated: shouldChangeFlowAnimated) as? BaseTabBarController else {
+            return
+        }
+        let viewModel = TrendingViewModel(services: services)
+        tabBarController.trendingsController.viewModel = viewModel
+        shouldRemoveFromParent = tabBarController.reactive.lifetime.ended.take(during: reactive.lifetime).mapToVoid()
     }
     
-
 }

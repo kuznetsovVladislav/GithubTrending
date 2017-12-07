@@ -11,4 +11,8 @@ import Foundation
 struct Pagination {
     let page: Int
     let perPage: Int
+    
+    var next: Pagination {
+        return Pagination(page: page + 1, perPage: perPage)
+    }
 }

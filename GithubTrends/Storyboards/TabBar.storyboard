@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BAO-lr-d3K">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Search-->
+        <scene sceneID="nSR-uY-JbW">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Search" id="QO8-zC-hhi" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Z57-3u-OJS"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nds-gV-utn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-768" y="252"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="C6Q-2L-zGf">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" id="CJQ-3v-8aX" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="obX-mx-lNq"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hfG-ai-7gQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="229" y="252"/>
+        </scene>
+        <!--Favourited-->
+        <scene sceneID="hz5-2C-7aP">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Favourited" id="yYa-LL-y7P" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="kqH-SZ-epI"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uaq-1H-1CA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-234" y="252"/>
+        </scene>
+        <!--Base Tab Bar Controller-->
+        <scene sceneID="Dva-Gj-Ffh">
+            <objects>
+                <tabBarController id="BAO-lr-d3K" customClass="BaseTabBarController" customModule="GithubTrends" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Uvp-Cb-Pb6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.24313725489999999" green="0.41176470590000003" blue="0.81176470590000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="QO8-zC-hhi" kind="relationship" relationship="viewControllers" id="K44-hO-MJd"/>
+                        <segue destination="yYa-LL-y7P" kind="relationship" relationship="viewControllers" id="B4H-oZ-2zq"/>
+                        <segue destination="CJQ-3v-8aX" kind="relationship" relationship="viewControllers" id="ct3-N3-JMM"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="P7H-AB-8I2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-233" y="-365"/>
+        </scene>
+    </scenes>
+</document>

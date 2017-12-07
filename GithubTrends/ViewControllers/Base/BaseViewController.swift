@@ -26,10 +26,6 @@ class BaseViewController: UIViewController, BaseViewControllerProtocol {
         super.init(coder: aDecoder)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     deinit {
         printRunning(#function)
     }

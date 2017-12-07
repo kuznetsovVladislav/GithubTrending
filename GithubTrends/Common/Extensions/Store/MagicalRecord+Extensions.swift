@@ -14,3 +14,12 @@ extension NSManagedObjectContext {
         return .mr_default()
     }
 }
+
+protocol ManagedObjectFoundable {}
+extension NSManagedObject: ManagedObjectFoundable {}
+
+extension ManagedObjectFoundable where Self: NSManagedObject {
+    static func findAll() -> [Self] {
+        return mr_findAll() as? [Self] ?? []
+    }
+}

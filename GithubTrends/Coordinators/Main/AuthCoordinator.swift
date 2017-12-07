@@ -29,9 +29,6 @@ final class AuthCoordinator: BaseCoordinator, CoordinatorProtocol {
     func start() {
         let controller = containerController.changeFlow(to: .auth, animated: shouldChangeFlowAnimated)
         shouldRemoveFromParent = controller.reactive.lifetime.ended.take(during: reactive.lifetime).mapToVoid()
-        services.trendsService.fetchTrendings(for: nil).startWithResult { result in
-            print()
-        }
     }
 
 }

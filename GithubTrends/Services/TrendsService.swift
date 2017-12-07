@@ -17,7 +17,7 @@ protocol TrendingsServiceProvider {
 
 protocol TrendingsServiceProtocol {
     func fetchLanguages() -> SignalProducer<[Language], BaseError>
-    func fetchTrendings(for language: Language?) -> SignalProducer<Slice<Trending>, BaseError>
+    func fetchTrendings(for language: String?, pagination: Pagination, savingToStore: Bool) -> SignalProducer<Slice<Trending>, BaseError>
 }
 
 class TrendingsService: TrendingsServiceProtocol {
@@ -29,21 +29,43 @@ class TrendingsService: TrendingsServiceProtocol {
     }
     
     func fetchLanguages() -> SignalProducer<[Language], BaseError> {
-        return .empty
+        return SignalProducer { observer, disposable in
+            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1500), execute: {
+                var languages: [Language] = []
+                for _ in 1 ... 5 {
+                    let id = UUID().uuidString
+                    languages.append(Language(id: UUID().uuidString, name: "\(id) Language"))
+                }
+                observer.send(value: languages)
+                observer.sendCompleted()
+            })
+        }
     }
     
-    func fetchTrendings(for language: Language?) -> SignalProducer<Slice<Trending>, BaseError> {
+    @discardableResult
+    func fetchTrendings(for language: String?, pagination: Pagination, savingToStore: Bool) -> SignalProducer<Slice<Trending>, BaseError> {
         let endpoint = apiService.endpoint(Path.repos)
         let parameters: [String: Any] = [
-            "q": "swift",
+            "q": "\(language ?? "All")",
             "sort": "stars",
-            "language": "swift",
-            "page": 1,
-            "per_page": 5
+            "language": "\(language ?? "")",
+            "page": pagination.page,
+            "per_page": pagination.perPage
         ]
-        let pagination = Pagination(page: 1, perPage: 5)
         let request = apiService.session.request(endpoint, method: .get, parameters: parameters)
-        return request.sliceResponse(pagination: pagination)
+        return request
+            .sliceResponse(pagination: pagination)
+            .on(value: { slice in
+                self.saveTrendingSliceToStore(slice)
+            })
+    }
+    
+    private func saveTrendingSliceToStore(_ trendingSlice: Slice<Trending>) {
+//        trendingSlice.items.forEach {
+//            StoreService().save(domain: $0, toStoreAs: ManagedTrending.self).start()
+//            let managedTrending = ManagedTrending(domain: $0)
+//            print()
+//        }
     }
 }
 

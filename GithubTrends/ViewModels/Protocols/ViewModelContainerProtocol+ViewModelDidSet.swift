@@ -11,29 +11,25 @@ import ReactiveSwift
 import ReactiveCocoa
 import Result
 
-extension ViewModelContainerProtocol where Self: NSObject {
+extension ViewModelContainerProtocol where Self: UIViewController {
     
     fileprivate var didLoadTrigger: SignalProducer<(), NoError> {
-        if self is UIViewController {
             return reactive
-                .trigger(for: #selector(UIViewController.viewDidLoad))
+                .trigger(for: #selector(viewDidLoad))
                 .take(first: 1)
                 .observe(on: UIScheduler())
                 .take(during: reactive.lifetime)
                 .producer
-        } else {
-            return .init(value: ())
-        }
     }
     
     var viewModel: ViewModel {
         get {
-            return objc_getAssociatedObject(self, ViewModelContainerKey.viewModel) as! Self.ViewModel
+            return getAssociatedObject(for: ViewModelContainerKey.viewModel, sourceObject: self)!
         }
         set {
             let token = Lifetime.Token()
-            objc_setAssociatedObject(self, ViewModelContainerKey.lifetimeToken, token, .OBJC_ASSOCIATION_RETAIN)
-            objc_setAssociatedObject(self, ViewModelContainerKey.viewModel, newValue, .OBJC_ASSOCIATION_RETAIN)
+            setAssociated(value: token, sourceObject: self, for: ViewModelContainerKey.lifetimeToken, policy: .retain)
+            setAssociated(value: newValue, sourceObject: self, for: ViewModelContainerKey.viewModel, policy: .retain)
             
             reactive.makeBindingTarget { (viewModel, _: Void) in
                 viewModel.didSet(newValue, for: Lifetime(token))

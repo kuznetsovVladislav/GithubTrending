@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MagicalRecord
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,9 +17,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        setupCoreData()
+        
         setupAppCoordinator()
         
         return true
+    }
+    
+    /**
+     Setups Core Data stack
+     */
+    private func setupCoreData() {
+        MagicalRecord.setShouldDeleteStoreOnModelMismatch(true)
+        MagicalRecord.setupCoreDataStack(withAutoMigratingSqliteStoreNamed: "DataModel")
+        MagicalRecord.setShouldAutoCreateDefaultPersistentStoreCoordinator(true)
+        MagicalRecord.setShouldAutoCreateManagedObjectModel(true)
     }
     
     /**
@@ -32,10 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let apiService = ApiService(configuration: .development)
         let services = ServicesProvider(apiService: apiService)
-        appCoordinator = AppCoordinator(
-            services: services,
-            containerController: baseContainerController
-        )
+        appCoordinator = AppCoordinator(services: services, containerController: baseContainerController)
         appCoordinator.start()
     }
 }

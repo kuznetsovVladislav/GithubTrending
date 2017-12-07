@@ -27,7 +27,7 @@ final class AuthService: AuthServiceProtocol {
     
     private let apiService: ApiServiceProtocol
     
-    private let _isSessionActive: MutableProperty<Bool> = MutableProperty(false)
+    private let _isSessionActive: MutableProperty<Bool> = MutableProperty(true)
     private(set) lazy var isSessionActive: Property<Bool> = Property(_isSessionActive)
     
     private var oauthSwift: OAuth2Swift  {
@@ -42,9 +42,9 @@ final class AuthService: AuthServiceProtocol {
     init(apiService: ApiServiceProtocol) {
         self.apiService = apiService
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(10)) {
-            self._isSessionActive.value = true
-        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(10)) {
+//            self._isSessionActive.value = true
+//        }
     }
     
     func signIn(email: String, password: String) -> SignalProducer<User, BaseError> {

@@ -12,5 +12,6 @@ target 'GithubTrends' do
 	pod 'MagicalRecord'
 	pod 'Alamofire'
 	pod 'AlamofireImage'
+	pod 'UIScrollView-InfiniteScroll'
 
 end

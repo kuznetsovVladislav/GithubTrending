@@ -1,5 +1,5 @@
 //
-//  Language+CoreDataProperties.swift
+//  ManagedLanguage+CoreDataProperties.swift
 //  GithubTrends
 //
 //  Created by Владислав  on 30.11.2017.
@@ -11,10 +11,10 @@ import Foundation
 import CoreData
 
 
-extension Language {
+extension ManagedLanguage {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Language> {
-        return NSFetchRequest<Language>(entityName: "Language")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<ManagedLanguage> {
+        return NSFetchRequest<ManagedLanguage>(entityName: "ManagedLanguage")
     }
 
     @NSManaged public var id: String?

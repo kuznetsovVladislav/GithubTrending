@@ -49,6 +49,7 @@ class BaseContainerController: UIViewController, BaseContainerControllerProtocol
         mainViewController = instantiateMainController()
         guard let mainViewController = mainViewController else { fatalError() }
         addChildViewController(mainViewController)
+        view.addSubview(mainViewController.view)
         mainViewController.view.frame = view.bounds
         mainViewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mainViewController.didMove(toParentViewController: self)
@@ -80,8 +81,8 @@ class BaseContainerController: UIViewController, BaseContainerControllerProtocol
     }
     
     private func instantiateMainController() -> UIViewController {
-        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let mainViewController = mainStoryboard.instantiateInitialViewController() else {
+        let tabBarStoryboard = UIStoryboard(name: "TabBar", bundle: nil)
+        guard let mainViewController = tabBarStoryboard.instantiateInitialViewController() else {
             fatalError("Unable to init `mainViewController`")
         }
         return mainViewController

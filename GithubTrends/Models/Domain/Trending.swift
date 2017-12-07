@@ -6,12 +6,12 @@
 //  Copyright © 2017 Vlad Kuznetsov. All rights reserved.
 //
 
-import UIKit
-import ObjectMapper
+import Foundation
 
 struct Trending: Codable {
     let id: Int
     let name: String
+    let description: String
     let fullName: String
     let forksCount: Int
     let starsCount: Int
@@ -19,10 +19,12 @@ struct Trending: Codable {
     let updatedAt: String
     let language: String?
     let url: String?
+    let owner: TrendingOwner
     
     enum CodingKeys: String, CodingKey {
         case id = "id"
         case name = "name"
+        case description = "description"
         case fullName = "full_name"
         case forksCount = "forks_count"
         case starsCount = "stargazers_count"
@@ -30,5 +32,6 @@ struct Trending: Codable {
         case updatedAt = "updated_at"
         case language = "language"
         case url = "url"
+        case owner = "owner"
     }
 }

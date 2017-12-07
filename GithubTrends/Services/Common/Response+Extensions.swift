@@ -13,8 +13,7 @@ import ReactiveSwift
 import ReactiveCocoa
 import Result
 
-extension DataRequest {
-    
+extension DataRequest {    
     func singleResponse<Object: Codable>() -> SignalProducer<Object, BaseError> {
         return SignalProducer { observer, disposable in
             self.responseJSON { response in
@@ -78,10 +77,6 @@ extension DataRequest {
             }
         }
     }
-    
-//    private func handle(error: Error) -> BaseError {
-//
-//    }
 }
 
 

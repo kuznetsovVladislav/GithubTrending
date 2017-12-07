@@ -12,6 +12,6 @@ import ReactiveSwift
 protocol ViewModelContainerProtocol: class {
     associatedtype ViewModel
     
-    var viewModel: ViewModel { get set }
+    var viewModel: ViewModel! { get set }
     func didSet(_ viewModel: ViewModel, for lifetime: Lifetime)
 }
