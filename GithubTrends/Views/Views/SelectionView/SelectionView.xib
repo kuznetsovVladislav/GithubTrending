@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SelectionView" customModule="GithubTrends" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="270" height="242"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fQS-jp-Q3E">
+                    <rect key="frame" x="0.0" y="0.0" width="270" height="242"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="57j-kZ-1gD">
+                        <rect key="frame" x="0.0" y="0.0" width="270" height="242"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0HM-WY-V3h">
+                                <rect key="frame" x="0.0" y="0.0" width="270" height="192"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="iN0-l3-epB" id="0NT-Ec-moj"/>
+                                    <outlet property="delegate" destination="iN0-l3-epB" id="IK6-bH-3rP"/>
+                                </connections>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iAe-Mk-Pr3">
+                                <rect key="frame" x="0.0" y="192" width="270" height="50"/>
+                                <color key="backgroundColor" red="0.24313725489999999" green="0.41176470590000003" blue="0.81176470590000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="7MR-jq-coa"/>
+                                </constraints>
+                                <state key="normal" title="Done">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="iAe-Mk-Pr3" firstAttribute="top" secondItem="0HM-WY-V3h" secondAttribute="bottom" id="7K7-vU-Mzm"/>
+                            <constraint firstAttribute="trailing" secondItem="iAe-Mk-Pr3" secondAttribute="trailing" id="FVt-qM-aS5"/>
+                            <constraint firstItem="0HM-WY-V3h" firstAttribute="top" secondItem="57j-kZ-1gD" secondAttribute="top" id="LyQ-xW-9GM"/>
+                            <constraint firstAttribute="trailing" secondItem="0HM-WY-V3h" secondAttribute="trailing" id="Mdl-ba-zBj"/>
+                            <constraint firstAttribute="bottom" secondItem="iAe-Mk-Pr3" secondAttribute="bottom" id="t9h-Lf-G1s"/>
+                            <constraint firstItem="0HM-WY-V3h" firstAttribute="leading" secondItem="57j-kZ-1gD" secondAttribute="leading" id="wQ1-JZ-dNh"/>
+                            <constraint firstItem="iAe-Mk-Pr3" firstAttribute="leading" secondItem="57j-kZ-1gD" secondAttribute="leading" id="zBr-mE-fU8"/>
+                        </constraints>
+                    </view>
+                    <blurEffect style="light"/>
+                </visualEffectView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="fQS-jp-Q3E" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="AUQ-DA-ZKI"/>
+                <constraint firstAttribute="trailing" secondItem="fQS-jp-Q3E" secondAttribute="trailing" id="LXA-37-izC"/>
+                <constraint firstAttribute="bottom" secondItem="fQS-jp-Q3E" secondAttribute="bottom" id="MO5-N5-KWS"/>
+                <constraint firstItem="fQS-jp-Q3E" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="t40-7e-quQ"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="doneButton" destination="iAe-Mk-Pr3" id="aNS-2x-uWW"/>
+                <outlet property="pickerView" destination="0HM-WY-V3h" id="67I-kG-6YE"/>
+            </connections>
+            <point key="canvasLocation" x="-18" y="-159"/>
+        </view>
+    </objects>
+</document>

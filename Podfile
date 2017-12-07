@@ -7,8 +7,11 @@ target 'GithubTrends' do
 
   	pod 'ReactiveCocoa', '~> 7.0'
 	pod 'ReactiveSwift', '~> 3.0'
+	pod 'OAuthSwift', '~> 1.2.0'
+	pod 'ObjectMapper', '~> 3.1.0'
 	pod 'MagicalRecord'
 	pod 'Alamofire'
 	pod 'AlamofireImage'
+	pod 'UIScrollView-InfiniteScroll'
 
 end

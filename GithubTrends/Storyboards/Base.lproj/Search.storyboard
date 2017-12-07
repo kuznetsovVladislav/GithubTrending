@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sMG-9e-eB6">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Trends View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="TrendsViewController" customModule="GithubTrends" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FZQ-KI-ZRp">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="jyH-Gl-50Q"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Vf3-jV-PQs"/>
+                                </connections>
+                            </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="0Vt-0m-Gqe">
+                                <rect key="frame" x="177" y="80" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0Vt-0m-Gqe" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="8IR-02-jtd"/>
+                            <constraint firstAttribute="bottom" secondItem="FZQ-KI-ZRp" secondAttribute="bottom" id="FGv-On-Aeo"/>
+                            <constraint firstAttribute="trailing" secondItem="FZQ-KI-ZRp" secondAttribute="trailing" id="S9V-yE-Fzz"/>
+                            <constraint firstItem="FZQ-KI-ZRp" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="lt8-vZ-4kB"/>
+                            <constraint firstItem="0Vt-0m-Gqe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wNu-LJ-h5C"/>
+                            <constraint firstItem="FZQ-KI-ZRp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="y8R-UJ-ljl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="BEQ-pv-lnH"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="0Vt-0m-Gqe" id="jbP-Qn-OJg"/>
+                        <outlet property="tableView" destination="FZQ-KI-ZRp" id="FH7-Jg-Z92"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="540" y="134"/>
+        </scene>
+        <!--Search-->
+        <scene sceneID="xdM-kv-0H6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="sMG-9e-eB6" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Search" image="search-tab" selectedImage="search-tab" id="fGS-oG-hQh">
+                        <inset key="largeContentSizeImageInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="529-w1-8bo">
+                        <rect key="frame" x="0.0" y="20" width="375" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="vpM-wg-qCF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y6N-a7-zu3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-321" y="134"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="search-tab" width="22" height="22"/>
+    </resources>
+</document>
