@@ -14,7 +14,7 @@ protocol ApiServiceProtocol {
     func endpoint(_ path: String) -> String
 }
 
-class ApiService: ApiServiceProtocol {
+final class ApiService: ApiServiceProtocol {
     
     private let configuration: Configuration
     let session: SessionManager

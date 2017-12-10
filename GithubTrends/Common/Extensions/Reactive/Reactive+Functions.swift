@@ -22,3 +22,4 @@ extension Signal {
         return map { _ in () }
     }
 }
+

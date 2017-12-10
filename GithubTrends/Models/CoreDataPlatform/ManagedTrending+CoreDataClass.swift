@@ -15,8 +15,6 @@ import MagicalRecord
 public final class ManagedTrending: NSManagedObject, DomainConvertible {
 
     var asDomain: Trending {
-        //TOFO: fix it
-        let owner = TrendingOwner(id: 1, login: "", avatar: "", htmlUrl: "")
         return Trending(
             id: Int(id),
             name: name ?? "",
@@ -28,7 +26,7 @@ public final class ManagedTrending: NSManagedObject, DomainConvertible {
             updatedAt: "",
             language: language,
             url: repoUrl,
-            owner: owner
+            owner: owner!.asDomain
         )
     }
 
@@ -44,5 +42,6 @@ public final class ManagedTrending: NSManagedObject, DomainConvertible {
         updatedAt = NSDate()
         language = domain.language
         repoUrl = domain.url
+        owner = ManagedTrendingOwner(domain: domain.owner)
     }
 }

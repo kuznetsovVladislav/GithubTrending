@@ -20,7 +20,7 @@ protocol TrendingsServiceProtocol {
     func fetchTrendings(for language: String?, pagination: Pagination, savingToStore: Bool) -> SignalProducer<Slice<Trending>, BaseError>
 }
 
-class TrendingsService: TrendingsServiceProtocol {
+final class TrendingsService: TrendingsServiceProtocol {
     
     private let apiService: ApiServiceProtocol
     

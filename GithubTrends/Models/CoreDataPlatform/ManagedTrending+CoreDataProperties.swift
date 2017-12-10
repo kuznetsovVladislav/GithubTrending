@@ -2,7 +2,7 @@
 //  ManagedTrending+CoreDataProperties.swift
 //  GithubTrends
 //
-//  Created by Владислав  on 29.11.2017.
+//  Created by Владислав  on 12/9/17.
 //  Copyright © 2017 Vlad Kuznetsov. All rights reserved.
 //
 //
@@ -27,5 +27,6 @@ extension ManagedTrending {
     @NSManaged public var repoUrl: String?
     @NSManaged public var starsCount: NSNumber?
     @NSManaged public var updatedAt: NSDate?
+    @NSManaged public var owner: ManagedTrendingOwner?
 
 }

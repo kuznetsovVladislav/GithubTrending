@@ -71,4 +71,3 @@ extension Reactive where Base: NSObject & UICollectionViewDelegate {
             .skipNil()
     }
 }
-

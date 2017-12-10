@@ -21,7 +21,11 @@ enum ProfileRowType {
     case logout
 }
 
-struct ProfileSection {
-    let section: ProfileSectionType
+struct ProfileSection: Equatable {
+    let type: ProfileSectionType
     let rows: [ProfileRowType]
+    
+    static func ==(lhs: ProfileSection, rhs: ProfileSection) -> Bool {
+        return lhs.type == rhs.type && lhs.rows == rhs.rows
+    }
 }

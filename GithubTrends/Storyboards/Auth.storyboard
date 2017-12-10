@@ -9,6 +9,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Auth View Controller-->
         <scene sceneID="GOR-Th-zlx">
@@ -18,19 +23,146 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gLc-jN-KKd">
-                                <rect key="frame" x="154" y="318" width="66" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Authorize"/>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="glJ-te-L8v">
+                                <rect key="frame" x="20" y="204" width="335" height="199"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gLc-jN-KKd" customClass="GradientButton" customModule="GithubTrends" customModuleProvider="target">
+                                        <rect key="frame" x="47.5" y="119" width="240" height="60"/>
+                                        <color key="backgroundColor" red="0.40000000000000002" green="0.65098039220000004" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="TzP-WW-mlb"/>
+                                            <constraint firstAttribute="width" constant="240" id="qBk-EC-foN"/>
+                                        </constraints>
+                                        <state key="normal" title="Authorize">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                                <color key="value" red="0.48627450980392156" green="0.792156862745098" blue="0.39215686274509803" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                                <color key="value" red="0.37647058823529411" green="0.61568627450980395" blue="0.32156862745098036" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="startLocation">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="endLocation">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="diagonalMode" value="NO"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.33725490200000002" green="0.5450980392" blue="0.28627450980000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="0.5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="highlightedColor">
+                                                <color key="value" red="0.28573095192344378" green="0.42890117694805197" blue="0.2530107382983719" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Native  modern Github client for browsing trending repositories" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rWg-e3-RPc">
+                                        <rect key="frame" x="20" y="49" width="295" height="40"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" red="0.31293095160000001" green="0.3317015016" blue="0.31988678809999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Github Trendings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sBb-mt-RCY">
+                                        <rect key="frame" x="0.0" y="0.0" width="335" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="24"/>
+                                        <color key="textColor" red="0.31293095155447609" green="0.33170150162337664" blue="0.31988678805538634" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="gLc-jN-KKd" firstAttribute="top" secondItem="rWg-e3-RPc" secondAttribute="bottom" constant="30" id="2ya-9w-8OV"/>
+                                    <constraint firstAttribute="trailing" secondItem="sBb-mt-RCY" secondAttribute="trailing" id="7s5-Kk-dib"/>
+                                    <constraint firstAttribute="bottom" secondItem="gLc-jN-KKd" secondAttribute="bottom" constant="20" id="JGQ-GV-1kk"/>
+                                    <constraint firstItem="sBb-mt-RCY" firstAttribute="leading" secondItem="glJ-te-L8v" secondAttribute="leading" id="K2T-ue-CBO"/>
+                                    <constraint firstItem="gLc-jN-KKd" firstAttribute="centerX" secondItem="glJ-te-L8v" secondAttribute="centerX" id="KLj-xg-vEu"/>
+                                    <constraint firstItem="rWg-e3-RPc" firstAttribute="top" secondItem="sBb-mt-RCY" secondAttribute="bottom" constant="20" id="N93-va-mwS"/>
+                                    <constraint firstItem="rWg-e3-RPc" firstAttribute="leading" secondItem="glJ-te-L8v" secondAttribute="leading" constant="20" id="N9P-4W-mCq"/>
+                                    <constraint firstItem="sBb-mt-RCY" firstAttribute="top" secondItem="glJ-te-L8v" secondAttribute="top" id="Ua1-gO-T77"/>
+                                    <constraint firstAttribute="trailing" secondItem="rWg-e3-RPc" secondAttribute="trailing" constant="20" id="tKe-xq-52I"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="glJ-te-L8v" firstAttribute="centerY" secondItem="nwD-KU-M98" secondAttribute="centerY" constant="-30" id="IaN-I5-bk8"/>
+                            <constraint firstItem="glJ-te-L8v" firstAttribute="leading" secondItem="7jc-eG-e4Z" secondAttribute="leading" constant="20" id="WVt-T4-eB8"/>
+                            <constraint firstItem="7jc-eG-e4Z" firstAttribute="trailing" secondItem="glJ-te-L8v" secondAttribute="trailing" constant="20" id="xLi-3o-lNV"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="7jc-eG-e4Z"/>
                     </view>
+                    <connections>
+                        <outlet property="authButton" destination="gLc-jN-KKd" id="u60-ma-Tb7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PVj-mk-Rz9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="258" y="75"/>
+            <point key="canvasLocation" x="256.80000000000001" y="74.212893553223395"/>
+        </scene>
+        <!--Login-->
+        <scene sceneID="5sX-Ov-mnm">
+            <objects>
+                <viewController storyboardIdentifier="WebViewViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="kfY-KW-Fjw" customClass="WebViewViewController" customModule="GithubTrends" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yiI-1S-8bb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oml-w2-9fV">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Oml-w2-9fV" secondAttribute="trailing" id="1Rc-oh-jbY"/>
+                            <constraint firstItem="Oml-w2-9fV" firstAttribute="leading" secondItem="yiI-1S-8bb" secondAttribute="leading" id="7qs-nm-DgE"/>
+                            <constraint firstItem="Oml-w2-9fV" firstAttribute="top" secondItem="yiI-1S-8bb" secondAttribute="top" id="O7g-J3-ggd"/>
+                            <constraint firstAttribute="bottom" secondItem="Oml-w2-9fV" secondAttribute="bottom" id="dL7-VS-RDG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="sQK-Kz-vSc"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Login" id="JoL-qE-7ke">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="3h2-yT-k3y"/>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="cancelItem" destination="3h2-yT-k3y" id="flL-gh-yUd"/>
+                        <outlet property="webView" destination="Oml-w2-9fV" id="n1x-Yl-Mg8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i4w-BA-83P" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2087" y="73"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Twz-bg-K1x">
+            <objects>
+                <navigationController storyboardIdentifier="WebViewNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Vb9-Ty-K2z" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="3CO-w2-S2B">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="kfY-KW-Fjw" kind="relationship" relationship="rootViewController" id="hrI-bv-Fco"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I23-U4-Z0l" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1146" y="74"/>
         </scene>
     </scenes>
 </document>

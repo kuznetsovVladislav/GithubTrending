@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="17B1003" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ManagedLanguage" representedClassName="ManagedLanguage" syncable="YES">
+        <attribute name="id" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="ManagedTrending" representedClassName="ManagedTrending" syncable="YES">
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="forksCount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="fullName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" attributeType="Integer 64" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="language" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="repoDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="repoUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="starsCount" optional="YES" attributeType="Integer 64" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="ManagedTrendingOwner" inverseName="managedTrending" inverseEntity="ManagedTrendingOwner" syncable="YES"/>
+    </entity>
+    <entity name="ManagedTrendingOwner" representedClassName="ManagedTrendingOwner" syncable="YES">
+        <attribute name="avatar" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="htmlUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" attributeType="Integer 64" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="login" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="managedTrending" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ManagedTrending" inverseName="owner" inverseEntity="ManagedTrending" syncable="YES"/>
+    </entity>
+    <entity name="ManagedUser" representedClassName="ManagedUser" syncable="YES">
+        <attribute name="avatarUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bio" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" attributeType="Integer 64" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="login" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="ManagedLanguage" positionX="-63" positionY="63" width="128" height="75"/>
+        <element name="ManagedTrending" positionX="-63" positionY="-9" width="128" height="210"/>
+        <element name="ManagedTrendingOwner" positionX="-63" positionY="63" width="128" height="120"/>
+        <element name="ManagedUser" positionX="-63" positionY="-18" width="128" height="165"/>
+    </elements>
+</model>

@@ -7,23 +7,39 @@
 //
 
 import UIKit
+import ReactiveSwift
+import ReactiveCocoa
+import AlamofireImage
 
 fileprivate enum Constant {
     static let navigationTitle: String = "Vlad Kuznetsov"
 }
 
-final class ProfileViewController: BaseViewController {
+final class ProfileViewController: BaseViewController/*, ViewModelContainerProtocol*/ {
 
     // MARK: - IBOutlets
     
     @IBOutlet private weak var tableView: UITableView!
     
+    var viewModel: ProfileViewModel! {
+        didSet {
+            didSet(viewModel, for: reactive.lifetime)
+        }
+    }
+    
+    private let name: MutableProperty<String?> = .init(nil)
+    private let login: MutableProperty<String?> = .init(nil)
+    private let email: MutableProperty<String?>  = .init(nil)
+    private let bio: MutableProperty<String?>  = .init(nil)
+    private let avatar: MutableProperty<URL?>  = .init(nil)
+    private var isDarkSideChosen: Property<Bool> = .init(value: false)
+    
     // MARK: - Variables
     
     var sections: [ProfileSection] = [
-        ProfileSection(section: .header, rows: [.header]),
-        ProfileSection(section: .settings, rows: [.colorTheme, .saveToStore]),
-        ProfileSection(section: .logout, rows: [.logout])
+        ProfileSection(type: .header, rows: [.header]),
+        ProfileSection(type: .settings, rows: [.colorTheme, .saveToStore]),
+        ProfileSection(type: .logout, rows: [.logout])
     ]
     
     // MARK: - Lifecycle
@@ -33,6 +49,8 @@ final class ProfileViewController: BaseViewController {
         setupController()
         setupTableVew()
     }
+    
+    // MARK: - Setup & Binding
     
     private func setupController() {
         navigationItem.title = Constant.navigationTitle
@@ -45,7 +63,39 @@ final class ProfileViewController: BaseViewController {
         tableView.registerNib(for: ProfileSwitchTVCell.self)
         tableView.registerNib(for: LabelTVCell.self)
     }
-
+    
+    func didSet(_ viewModel: ProfileViewModel, for lifetime: Lifetime) {
+        // Collecting View input
+        let sectionTypes = sections.map {$0.type}
+        guard
+            let settingsSectionIndex = sectionTypes.index(of: .settings),
+            let logoutSectionIndex = sectionTypes.index(of: .logout),
+            let colorThemeRowIndex = sections[settingsSectionIndex].rows.index(of: .colorTheme),
+            let saveSearchRowIndex = sections[settingsSectionIndex].rows.index(of: .saveToStore),
+            let logoutRowIndex = sections[logoutSectionIndex].rows.index(of: .logout),
+            let colorSchemeCell = tableView.cellForRow(at: IndexPath(row: colorThemeRowIndex, section: settingsSectionIndex)) as? ProfileSwitchTVCell,
+            let saveSearchCell = tableView.cellForRow(at: IndexPath(row: saveSearchRowIndex, section: settingsSectionIndex)) as? ProfileSwitchTVCell else {
+                return
+        }
+        
+        let logoutPressed = reactive.rowSelection.filter {$0 == IndexPath(row: logoutRowIndex, section: logoutSectionIndex)}.mapToVoid()
+        
+        let input = ProfileViewModel.Input(
+            joinDarkSideSwitchChanged: colorSchemeCell.valueSwitch.reactive.isOnValues.take(during: lifetime),
+            saveSearchResultsSwitchChanged: saveSearchCell.valueSwitch.reactive.isOnValues.take(during: lifetime),
+            logoutButtonPressed: logoutPressed.take(during: lifetime)
+        )
+        
+        // Binding ViewModel output
+        let output = viewModel.transform(input)
+        name <~ output.name
+		login <~ output.login
+        email <~ output.email
+        bio <~ output.bio
+        avatar <~ output.avatar
+        isDarkSideChosen = output.isDarkSideChosed
+        tableView.reactive.reloadData <~ output.shouldReloadInterface
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -56,10 +106,24 @@ extension ProfileViewController: UITableViewDataSource {
         switch row {
         case .header:
             let cell = tableView.dequeueReusableCell(cellClass: ProfileHeaderTVCell.self, for: indexPath)
+            cell.nameLabel.text = name.value ?? "User Name"
+            cell.loginLabel.text = login.value ?? "Login"
+            cell.emailLabel.text = email.value ?? "E-mail"
+            cell.bioLabel.text = bio.value ?? "Biography"
+            let placeholder = #imageLiteral(resourceName: "git-logo-black")
+            cell.avatarImageView.image = placeholder
+            if let url = avatar.value {
+            	cell.avatarImageView.af_setImage(
+                    withURL: url,
+                    placeholderImage: placeholder,
+                    imageTransition: .crossDissolve(0.3)
+                )
+            }
             resultCell = cell
         case .colorTheme:
             let cell = tableView.dequeueReusableCell(cellClass: ProfileSwitchTVCell.self, for: indexPath)
             cell.keyLabel.text = row.title
+            cell.valueSwitch.isOn = isDarkSideChosen.value
             resultCell = cell
         case .saveToStore:
             let cell = tableView.dequeueReusableCell(cellClass: ProfileSwitchTVCell.self, for: indexPath)
@@ -94,7 +158,7 @@ extension ProfileViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        let section = sections[section].section
+        let section = sections[section].type
         return section.height
     }
 }

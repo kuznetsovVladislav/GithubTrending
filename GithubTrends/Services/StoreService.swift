@@ -18,7 +18,7 @@ protocol StoreServiceProvider {
 
 protocol StoreServiceProtocol {
     func fetch<Object: DomainConvertible>(objectsOfType type: Object.Type) -> SignalProducer<[Object], NoError>
-    func save<Object: DomainConvertible>(domain: Object.Domain, toStoreAs managedObject: Object.Type) -> SignalProducer<Object, BaseError>
+    func save<Object: DomainConvertible>(_ domain: Object.Domain, toStoreAs managedObject: Object.Type) -> SignalProducer<Object, BaseError>
 }
 
 final class StoreService: StoreServiceProtocol {
@@ -36,7 +36,7 @@ final class StoreService: StoreServiceProtocol {
     }
     
     // Currently not working
-    func save<Object: DomainConvertible>(domain: Object.Domain, toStoreAs managedObject: Object.Type) -> SignalProducer<Object, BaseError> {
+    func save<Object: DomainConvertible>(_ domain: Object.Domain, toStoreAs managedObject: Object.Type) -> SignalProducer<Object, BaseError> {
         return SignalProducer { observer, dispoable in
             var object: Object!
             NSManagedObjectContext.default.mr_save({ _ in

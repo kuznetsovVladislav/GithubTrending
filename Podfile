@@ -13,5 +13,6 @@ target 'GithubTrends' do
 	pod 'Alamofire'
 	pod 'AlamofireImage'
 	pod 'UIScrollView-InfiniteScroll'
+	pod 'Dwifft'
 
 end

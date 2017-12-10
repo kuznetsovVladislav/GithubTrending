@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class ServicesProvider: AuthServiceProvider, TrendingsServiceProvider {
+final class ServicesProvider: AuthServiceProvider, TrendingsServiceProvider, UserServiceProvider {
     
     private let apiService: ApiServiceProtocol
     
@@ -22,6 +22,10 @@ final class ServicesProvider: AuthServiceProvider, TrendingsServiceProvider {
     
     var trendsService: TrendingsServiceProtocol {
         return TrendingsService(apiService: apiService)
+    }
+    
+    var userService: UserServiceProtocol {
+        return UserService(apiService: apiService)
     }
 }
 

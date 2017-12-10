@@ -7,17 +7,32 @@
 //
 
 import UIKit
+import ReactiveSwift
+import ReactiveCocoa
 
 final class AuthViewController: BaseViewController {
+    
+    @IBOutlet private weak var authButton: GradientButton!
+    
+    var viewModel: AuthViewModel! {
+        didSet {
+            didSet(viewModel, for: reactive.lifetime)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+		
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func didSet(_ viewModel: AuthViewModel, for lifetime: Lifetime) {
+        // Collecting view input
+        let authButtonPressed = authButton.reactive.controlEvents(UIControlEvents.touchUpInside).take(during: lifetime)
+        
+        let input = AuthViewModel.Input(
+            authButtonPressed: authButtonPressed.mapToVoid()
+    	)
+        
+        let output = viewModel.transform(input)
     }
 }

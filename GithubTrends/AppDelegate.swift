@@ -8,6 +8,7 @@
 
 import UIKit
 import MagicalRecord
+import OAuthSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     /**
-     Setups Core Data stack
+     Setup Core Data stack
      */
     private func setupCoreData() {
         MagicalRecord.setShouldDeleteStoreOnModelMismatch(true)
@@ -35,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     /**
-     Setups Main Application Flow
+     Setup Main Application Flow
      */
     private func setupAppCoordinator() {
 		window = UIWindow(frame: UIScreen.main.bounds)
@@ -50,10 +51,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
-// MARK: - Delegate methods
 extension AppDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        if url.host == "https://github.com/app-github-trends" {
+            OAuthSwift.handle(url: url)
+        }
         return true
     }
 }
-

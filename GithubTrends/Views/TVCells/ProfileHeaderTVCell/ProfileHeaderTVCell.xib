@@ -46,9 +46,9 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="kuznetsovVladislav" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7c-GU-tPG">
-                        <rect key="frame" x="152" y="65" width="152" height="20"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" verticalCompressionResistancePriority="1000" text="kuznetsovVladislav" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o7c-GU-tPG">
+                        <rect key="frame" x="152" y="65" width="152" height="18"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                         <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -58,13 +58,13 @@
                         <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No biography" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVx-cl-5Pq">
-                        <rect key="frame" x="152" y="90" width="152" height="18"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Biography" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVx-cl-5Pq">
+                        <rect key="frame" x="152" y="88" width="152" height="18"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                         <color key="textColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vladislav Kuznetsov" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E7w-h6-3y6">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="253" verticalCompressionResistancePriority="1000" text="Vladislav Kuznetsov" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E7w-h6-3y6">
                         <rect key="frame" x="152" y="16" width="152" height="43"/>
                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
                         <color key="textColor" red="0.19607843137254902" green="0.19607843137254902" blue="0.19607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -73,6 +73,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="7yw-8a-R2B" firstAttribute="top" secondItem="dCl-uo-rSu" secondAttribute="bottom" constant="12" id="6KW-z9-bM7"/>
+                    <constraint firstItem="bVx-cl-5Pq" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="dCl-uo-rSu" secondAttribute="bottom" id="EGP-H9-HnN"/>
                     <constraint firstItem="E7w-h6-3y6" firstAttribute="leading" secondItem="dCl-uo-rSu" secondAttribute="trailing" constant="16" id="KSp-4L-p5p"/>
                     <constraint firstItem="E7w-h6-3y6" firstAttribute="top" secondItem="dCl-uo-rSu" secondAttribute="top" id="Nc2-Nv-M5l"/>
                     <constraint firstItem="dCl-uo-rSu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="OBF-nX-0N2"/>
@@ -89,6 +90,13 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="avatarImageView" destination="dCl-uo-rSu" id="DdJ-pl-TZk"/>
+                <outlet property="bioLabel" destination="bVx-cl-5Pq" id="xvu-x9-HYK"/>
+                <outlet property="emailLabel" destination="7yw-8a-R2B" id="pEb-rf-VFP"/>
+                <outlet property="loginLabel" destination="o7c-GU-tPG" id="9kr-lA-6c9"/>
+                <outlet property="nameLabel" destination="E7w-h6-3y6" id="X03-BW-gCh"/>
+            </connections>
             <point key="canvasLocation" x="34" y="122"/>
         </tableViewCell>
     </objects>

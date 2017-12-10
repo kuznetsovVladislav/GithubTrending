@@ -11,9 +11,6 @@ import UIKit
 class ProfileSwitchTVCell: UITableViewCell {
 
     @IBOutlet weak var keyLabel: UILabel!
-    @IBOutlet private weak var valueSwitch: UISwitch!
+    @IBOutlet weak var valueSwitch: UISwitch!
 
-    
-    @IBAction func switchValueChanged(_ sender: UISwitch) {
-    }
 }

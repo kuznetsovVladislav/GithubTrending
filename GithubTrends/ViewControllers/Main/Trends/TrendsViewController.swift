@@ -20,7 +20,7 @@ fileprivate enum Constant {
     static let popoverAnimationDuration: TimeInterval = 0.3
 }
 
-final class TrendsViewController: BaseViewController/*, ViewModelContainerProtocol*/ {
+final class TrendsViewController: BaseViewController, ViewModelContainerProtocol {
     
     // MARK: - Types
     
@@ -58,14 +58,6 @@ final class TrendsViewController: BaseViewController/*, ViewModelContainerProtoc
     let searchController = UISearchController(searchResultsController: nil)
     
     var popoverTopConstraint: NSLayoutConstraint?
-    
-    var viewModel: TrendingViewModel! {
-        didSet {
-            reactive.trigger(for: #selector(viewDidLoad)).take(during: reactive.lifetime).observeValues {
-                self.didSet(self.viewModel, for: self.reactive.lifetime)
-            }
-        }
-    }
     
     // MARK: - Lifecycle
     
@@ -142,6 +134,8 @@ final class TrendsViewController: BaseViewController/*, ViewModelContainerProtoc
         reactive.shouldShowNetworkActivity <~ output.isExecuting
         tableView.reactive.reloadData <~ output.requestCompleted
 		cellViewModels <~ output.cellViewModels
+        
+        _ = self.viewModel
     }
 
     private func willDisplayNeededRow(beforeLast rowSubscraction: Int) -> Signal<(), NoError> {

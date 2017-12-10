@@ -20,6 +20,8 @@ final class TrendingViewModel: ViewModelProtocol {
     private let cellViewModels: MutableProperty<[TrendingCellViewModel]> = .init([])
     private let pagination: MutableProperty<Pagination> = .init(Pagination(page: 1, perPage: 20))
     
+    private lazy var fetchTrendingsAction = Action(execute: self.services.trendsService.fetchTrendings)
+    
     // MARK: - ViewModelProtocol
     
     struct Input {
@@ -39,7 +41,6 @@ final class TrendingViewModel: ViewModelProtocol {
     }
     
     func transform(_ input: TrendingViewModel.Input) -> TrendingViewModel.Output {
-        let fetchTrendingsAction = Action(execute: services.trendsService.fetchTrendings)
         let mappedCellsActionSignal = fetchTrendingsAction.values.map {$0.items.map {TrendingCellViewModel(trending: $0)}}
         let mappedPaginationActionSignal = fetchTrendingsAction.values.map {$0.pagination}
         
@@ -47,10 +48,9 @@ final class TrendingViewModel: ViewModelProtocol {
         pagination <~ mappedPaginationActionSignal.producer
         
         fetchTrendingsAction.apply((nil, pagination.value, true)).start()
-        // Binding does not work.
         fetchTrendingsAction <~ input.searchBarInput
             .map {($0, self.pagination.value, true)}
-            .debounce(0.5, on: QueueScheduler())
+            .debounce(0.3, on: QueueScheduler())
         fetchTrendingsAction <~ input.willDisplayRowForPagination
             .map {(nil, self.pagination.value, true)}
         
