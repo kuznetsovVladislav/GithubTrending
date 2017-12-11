@@ -25,18 +25,18 @@ extension ProfileRowType {
         case .header:
             return 180.0
         case .colorTheme:
-            return 60
+            return 50
         case .saveToStore:
-            return 60
+            return 50
         case .logout:
-            return 60
+            return 50
         }
     }
     
     var title: String {
         switch self {
         case .colorTheme:
-            return "Join the Dark Side"
+            return "Come to the the Dark Side"
         case .saveToStore:
             return "Should save search results"
         case .logout:

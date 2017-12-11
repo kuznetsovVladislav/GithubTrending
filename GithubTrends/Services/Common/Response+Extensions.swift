@@ -19,16 +19,22 @@ extension DataRequest {
             self.responseJSON { response in
                 switch response.result {
                 case .success(let value):
-                    guard
-                        let json = value as? [String: Any],
-                        let object = Object.initialize(withJSON: json) else {
-                            observer.send(error: .mapping)
-                            return
+                    guard let json = value as? [String: Any] else {
+                        observer.send(error: .unknown)
+                        return
                     }
-                    observer.send(value: object)
-                    observer.sendCompleted()
-                case .failure(_): //TODO: Fix
-                    break
+                    if let apiError = ApiError(json: json) {
+                        observer.send(error: .apiError(apiError))
+                        return
+                    }
+                    if let object = Object.initialize(withJSON: json) {
+                        observer.send(value: object)
+                        observer.sendCompleted()
+                    } else {
+                    	observer.send(error: .mapping)
+                    }
+                case .failure(let error):
+                    observer.send(error: .internal(error))
                 }
             }
         }
@@ -40,11 +46,12 @@ extension DataRequest {
                 switch response.result {
                 case .success(let value):
                     guard let json = value as? [String: Any] else {
-                        return //TODO: Fix
+                        observer.send(error: .unknown)
+                        return
                     }
                     _ = json
-                case .failure(_): //TODO: Fix
-                    break
+                case .failure(let error):
+                    observer.send(error: .internal(error))
                 }
             })
         }
@@ -55,13 +62,21 @@ extension DataRequest {
             self.responseJSON { response in
                 switch response.result {
                 case .success(let value):
+                    guard let json = value as? [String: Any] else {
+                        observer.send(error: .unknown)
+                        return
+                    }
+                    if let apiError = ApiError(json: json) {
+                        observer.send(error: .apiError(apiError))
+                        return
+                    }
                     guard
-                        let json = value as? [String: Any],
                         let total = json["total_count"] as? Int,
                         let items = json["items"] as? [[String: Any]] else {
-                            observer.send(error: .mapping)
+                            observer.send(error: .unknown)
                             return
                     }
+                    
                     var objects: [Object] = []
                     items.forEach {
                         if let object = Object.initialize(withJSON: $0) {
@@ -71,8 +86,8 @@ extension DataRequest {
                     let slice: Slice<Object> = Slice(items: objects, total: total, pagination: pagination)
                     observer.send(value: slice)
                     observer.sendCompleted()
-                case .failure(_):
-                    break // TODO: Fix
+                case .failure(let error):
+                    observer.send(error: .internal(error))
                 }
             }
         }

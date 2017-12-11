@@ -11,9 +11,10 @@ import UIKit
 class ProfileHeaderTVCell: UITableViewCell {
     
     @IBOutlet weak var avatarImageView: DesignableImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var loginLabel: UILabel!
-    @IBOutlet weak var bioLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var reposCountLabel: UILabel!
+    @IBOutlet weak var followersCountLabel: UILabel!
+    @IBOutlet weak var followingCountLabel: NSLayoutConstraint!
+    
     
 }

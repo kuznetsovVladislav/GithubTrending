@@ -28,10 +28,10 @@
             </objects>
             <point key="canvasLocation" x="-359" y="78"/>
         </scene>
-        <!--View Controller-->
+        <!--Favourited View Controller-->
         <scene sceneID="s3j-Be-ZuQ">
             <objects>
-                <viewController id="8k7-7o-4D4" sceneMemberID="viewController">
+                <viewController id="8k7-7o-4D4" customClass="FavouritedViewController" customModule="GithubTrends" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="59N-55-w7Y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -46,7 +46,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="like-tab" width="39" height="39"/>
-        <image name="like-tab-filled" width="39" height="39"/>
+        <image name="like-tab" width="22" height="22"/>
+        <image name="like-tab-filled" width="22" height="21"/>
     </resources>
 </document>

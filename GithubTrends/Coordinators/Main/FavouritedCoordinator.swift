@@ -1,8 +1,8 @@
 //
-//  TrendsCoordinator.swift
+//  FavouritedCoordinator.swift
 //  GithubTrends
 //
-//  Created by Владислав  on 23.11.2017.
+//  Created by Владислав  on 12/10/17.
 //  Copyright © 2017 Vlad Kuznetsov. All rights reserved.
 //
 
@@ -11,7 +11,7 @@ import ReactiveSwift
 import ReactiveCocoa
 import Result
 
-final class TrendsCoordinator: BaseCoordinator, CoordinatorProtocol {
+final class FavouritedCoordinator: BaseCoordinator, CoordinatorProtocol {
     
     var containerController: BaseContainerControllerProtocol
     var tabBarController: BaseTabBarController
@@ -30,18 +30,15 @@ final class TrendsCoordinator: BaseCoordinator, CoordinatorProtocol {
     
     func start() {
         guard
-            let trendingsNavigationController = UIStoryboard(name: "Search", bundle: nil).instantiateInitialViewController() as? UINavigationController,
-        	let trendingViewController = trendingsNavigationController.viewControllers.first as? TrendsViewController else {
+            let favouritedNavigationController = UIStoryboard(name: "Favourited", bundle: nil).instantiateInitialViewController() as? UINavigationController,
+            let favouritedViewController = favouritedNavigationController.viewControllers.first as? FavouritedViewController else {
                 return
         }
-        let viewModel = TrendingViewModel(services: services)
-        trendingViewController.viewModel = viewModel
         if tabBarController.viewControllers != nil {
-            tabBarController.viewControllers?.append(trendingsNavigationController)
+            tabBarController.viewControllers?.append(favouritedNavigationController)
         } else {
-            tabBarController.viewControllers = [trendingsNavigationController]
+            tabBarController.viewControllers = [favouritedNavigationController]
         }
-        shouldRemoveFromParent = trendingsNavigationController.reactive.lifetime.ended.take(during: reactive.lifetime).mapToVoid()
+        shouldRemoveFromParent = favouritedNavigationController.reactive.lifetime.ended.take(during: reactive.lifetime).mapToVoid()
     }
-    
 }

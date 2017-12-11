@@ -11,21 +11,41 @@ import ReactiveSwift
 import ReactiveCocoa
 import Result
 
-class ProfileCoordinator: BaseCoordinator, CoordinatorProtocol {
+final class ProfileCoordinator: BaseCoordinator, CoordinatorProtocol {
     
     var containerController: BaseContainerControllerProtocol
+    var tabBarController: BaseTabBarController
     var services: ServicesProvider
     var childs: [CoordinatorProtocol] = []
     var shouldRemoveFromParent: Signal<(), NoError>?
     
-    init(services: ServicesProvider, containerController: BaseContainerControllerProtocol) {
+    init(services: ServicesProvider,
+         containerController: BaseContainerControllerProtocol,
+         tabBarController: BaseTabBarController)
+    {
         self.services = services
         self.containerController = containerController
+        self.tabBarController = tabBarController
     }
     
     func start() {
-        
+        guard
+            let profileNavigationController = UIStoryboard(name: "Profile", bundle: nil).instantiateInitialViewController() as? UINavigationController,
+            let profileViewController = profileNavigationController.viewControllers.first as? ProfileViewController else {
+                return
+        }
+        let viewModel = ProfileViewModel(services: services, actions: ProfileViewModel.Actions(logoutAction: Action(execute: handleLogout)))
+        profileViewController.viewModel = viewModel
+        if tabBarController.viewControllers != nil {
+            tabBarController.viewControllers?.append(profileNavigationController)
+        } else {
+            tabBarController.viewControllers = [profileNavigationController]
+        }
+        shouldRemoveFromParent = profileNavigationController.reactive.lifetime.ended.take(during: reactive.lifetime).mapToVoid()
     }
     
 
+    private func handleLogout() -> SignalProducer<(), NoError> {
+        return .empty
+    }
 }

@@ -43,7 +43,7 @@ final class StoreService: StoreServiceProtocol {
                 object = Object(domain: domain)
             }, completion: { success, error in
                 if let error = error {
-                    observer.send(error: .storeError(error))
+                    observer.send(error: .internal(error))
                 } else if !success {
                     observer.send(error: .unknown) // Context does not have any changes
                 } else {

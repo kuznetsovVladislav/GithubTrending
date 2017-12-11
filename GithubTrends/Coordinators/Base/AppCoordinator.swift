@@ -40,13 +40,13 @@ final class AppCoordinator: BaseCoordinator, CoordinatorProtocol {
     }
     
     private func openMainFlow() {
-        let trendsCoordinator = TrendsCoordinator(
+        let tabBarCoordinator = TabBarCoordinator(
             services: services,
             containerController: containerController,
             shouldChangeFlowAnimated: shouldChangeFlowAnimated
         )
-        trendsCoordinator.start()
-        add(child: trendsCoordinator)
+        tabBarCoordinator.start()
+        add(child: tabBarCoordinator)
     }
     
     private var isSessionActive: BindingTarget<Bool> {

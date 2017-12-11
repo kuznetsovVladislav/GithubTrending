@@ -26,6 +26,26 @@ class BaseTabBarController: UITabBarController {
         fatalError("Wrong controller was set")
     }
     
+    var favouritedController: UIViewController {
+        if
+            let navigationController = viewControllers?[safe: 1] as? UINavigationController,
+            let controller = navigationController.viewControllers.first as? FavouritedViewController
+        {
+            return controller
+        }
+        fatalError("Wrong controller was set")
+    }
+    
+    var profileController: ProfileViewController {
+        if
+            let navigationController = viewControllers?[safe: 2] as? UINavigationController,
+            let controller = navigationController.viewControllers.first as? ProfileViewController
+        {
+            return controller
+        }
+        fatalError("Wrong controller was set")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

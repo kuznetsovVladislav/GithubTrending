@@ -15,18 +15,12 @@ fileprivate enum Constant {
     static let navigationTitle: String = "Vlad Kuznetsov"
 }
 
-final class ProfileViewController: BaseViewController/*, ViewModelContainerProtocol*/ {
+final class ProfileViewController: BaseViewController, ViewModelContainerProtocol {
 
     // MARK: - IBOutlets
     
     @IBOutlet private weak var tableView: UITableView!
-    
-    var viewModel: ProfileViewModel! {
-        didSet {
-            didSet(viewModel, for: reactive.lifetime)
-        }
-    }
-    
+
     private let name: MutableProperty<String?> = .init(nil)
     private let login: MutableProperty<String?> = .init(nil)
     private let email: MutableProperty<String?>  = .init(nil)
@@ -48,6 +42,9 @@ final class ProfileViewController: BaseViewController/*, ViewModelContainerProto
         super.viewDidLoad()
         setupController()
         setupTableVew()
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) {
+            self.showErrorView()
+        }
     }
     
     // MARK: - Setup & Binding
@@ -66,6 +63,7 @@ final class ProfileViewController: BaseViewController/*, ViewModelContainerProto
     
     func didSet(_ viewModel: ProfileViewModel, for lifetime: Lifetime) {
         // Collecting View input
+        tableView.layoutIfNeeded()
         let sectionTypes = sections.map {$0.type}
         guard
             let settingsSectionIndex = sectionTypes.index(of: .settings),
@@ -106,10 +104,10 @@ extension ProfileViewController: UITableViewDataSource {
         switch row {
         case .header:
             let cell = tableView.dequeueReusableCell(cellClass: ProfileHeaderTVCell.self, for: indexPath)
-            cell.nameLabel.text = name.value ?? "User Name"
-            cell.loginLabel.text = login.value ?? "Login"
-            cell.emailLabel.text = email.value ?? "E-mail"
-            cell.bioLabel.text = bio.value ?? "Biography"
+//            cell.nameLabel.text = name.value ?? "User Name"
+//            cell.loginLabel.text = login.value ?? "Login"
+//            cell.emailLabel.text = email.value ?? "E-mail"
+//            cell.bioLabel.text = bio.value ?? "Biography"
             let placeholder = #imageLiteral(resourceName: "git-logo-black")
             cell.avatarImageView.image = placeholder
             if let url = avatar.value {

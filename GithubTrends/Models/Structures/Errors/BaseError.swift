@@ -11,7 +11,7 @@ import UIKit
 enum BaseError: LocalizedError, CustomNSError {
     case apiError(ApiError)
     case mapping
-	case storeError(Error)
+	case `internal`(Error)
     case unknown
     
     var errorDescription: String? {
@@ -20,7 +20,7 @@ enum BaseError: LocalizedError, CustomNSError {
             return error.message
         case .mapping:
             return "[INTERNAL] Mapping Error"
-        case .storeError(let error):
+        case .internal(let error):
             return "[INTERNAL] Store Error: \(error.localizedDescription)"
         case .unknown:
             return "Oops! Something went wrong. Try again later"

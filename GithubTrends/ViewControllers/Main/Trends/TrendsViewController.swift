@@ -134,8 +134,6 @@ final class TrendsViewController: BaseViewController, ViewModelContainerProtocol
         reactive.shouldShowNetworkActivity <~ output.isExecuting
         tableView.reactive.reloadData <~ output.requestCompleted
 		cellViewModels <~ output.cellViewModels
-        
-        _ = self.viewModel
     }
 
     private func willDisplayNeededRow(beforeLast rowSubscraction: Int) -> Signal<(), NoError> {

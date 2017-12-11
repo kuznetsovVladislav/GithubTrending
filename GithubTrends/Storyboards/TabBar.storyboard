@@ -9,36 +9,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Search-->
-        <scene sceneID="nSR-uY-JbW">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Search" id="QO8-zC-hhi" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="Z57-3u-OJS"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Nds-gV-utn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-768" y="252"/>
-        </scene>
-        <!--Profile-->
-        <scene sceneID="C6Q-2L-zGf">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Profile" id="CJQ-3v-8aX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="obX-mx-lNq"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hfG-ai-7gQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="229" y="252"/>
-        </scene>
-        <!--Favourited-->
-        <scene sceneID="hz5-2C-7aP">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Favourited" id="yYa-LL-y7P" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="kqH-SZ-epI"/>
-                </viewControllerPlaceholder>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Uaq-1H-1CA" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-234" y="252"/>
-        </scene>
         <!--Base Tab Bar Controller-->
         <scene sceneID="Dva-Gj-Ffh">
             <objects>
@@ -48,12 +18,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" red="0.24313725489999999" green="0.41176470590000003" blue="0.81176470590000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.24313725490196078" green="0.41176470588235292" blue="0.81176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBar>
-                    <connections>
-                        <segue destination="QO8-zC-hhi" kind="relationship" relationship="viewControllers" id="K44-hO-MJd"/>
-                        <segue destination="yYa-LL-y7P" kind="relationship" relationship="viewControllers" id="B4H-oZ-2zq"/>
-                        <segue destination="CJQ-3v-8aX" kind="relationship" relationship="viewControllers" id="ct3-N3-JMM"/>
-                    </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P7H-AB-8I2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

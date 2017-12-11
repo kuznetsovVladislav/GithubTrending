@@ -9,18 +9,19 @@
 import UIKit
 
 struct ApiError: LocalizedError {
-    let code: Int
     let message: String
-    let errors: [[String: String]]
+    private let documentationUrl: String?
     
     var errorDescription: String? {
         return message
     }
     
-//    init(json: [String: Any]) {
-//        message = json["message"] as? String ?? ""
-//        if let errors = json["errors"] as? [[String: String]] {
-//            self.errors = errors
-//        }
-//    }
+    init?(json: [String: Any]) {
+        if let message = json["message"] as? String {
+            self.message = message
+            documentationUrl = json["documentation_url"] as? String
+        } else {
+            return nil
+        }
+    }
 }
