@@ -15,7 +15,7 @@ class BaseViewController: UIViewController, BaseViewControllerProtocol {
     // MARK: - Variables
     
     private lazy var errorView: ErrorView = setupErrorView()
-    private var errorViewHeight: NSLayoutConstraint?
+    private var errorViewZeroHeight: NSLayoutConstraint?
 
     // MARK: - Lifecycle
     
@@ -43,6 +43,12 @@ class BaseViewController: UIViewController, BaseViewControllerProtocol {
         print("\(self) \(function)")
     }
     
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        _ = self.errorView
+    }
+    
     private func setupErrorView() -> ErrorView {
         let view = ErrorView.instantiateFromNib()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -52,36 +58,36 @@ class BaseViewController: UIViewController, BaseViewControllerProtocol {
             view.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
             view.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor)]
         )
-        errorViewHeight = view.heightAnchor.constraint(equalToConstant: 0.0)
-        errorViewHeight?.isActive = true
-        self.view.layoutIfNeeded()
+        errorViewZeroHeight = view.heightAnchor.constraint(equalToConstant: 0.0)
+        errorViewZeroHeight?.isActive = true
         return view
+        
     }
     
-    func showErrorView() {
-        errorViewHeight?.constant = 50.0
+    private func showErrorView(with message: String) {
+        errorViewZeroHeight?.isActive = false
         UIView.animate(withDuration: 0.2, animations: {
             self.view.layoutIfNeeded()
         }, completion: { _ in
-            self.errorView.showMessage(animated: true)
+            self.errorView.show(message, animated: true)
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
                 self.hideErrorView()
             })
         })
     }
-    
-    func hideErrorView() {
+
+    private func hideErrorView() {
         errorView.hideMessage(animated: true) { [unowned self] _ in
-            self.errorViewHeight?.constant = 0.0
+            self.errorViewZeroHeight?.isActive = true
             UIView.animate(withDuration: 0.2, animations: {
                 self.view.layoutIfNeeded()
             }, completion: nil)
         }
     }
-//    
-//    var showError: BindingTarget<BaseError> {
-//        return reactive.makeBindingTarget({ `self`, _ in
-//            <#code#>
-//        })
-//    }
+  
+    var showError: BindingTarget<BaseError> {
+        return reactive.makeBindingTarget({ `self`, error in
+            self.showErrorView(with: error.localizedDescription)
+        })
+    }
 }

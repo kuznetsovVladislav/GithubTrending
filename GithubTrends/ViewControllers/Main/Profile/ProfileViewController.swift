@@ -42,9 +42,6 @@ final class ProfileViewController: BaseViewController, ViewModelContainerProtoco
         super.viewDidLoad()
         setupController()
         setupTableVew()
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3)) {
-            self.showErrorView()
-        }
     }
     
     // MARK: - Setup & Binding
@@ -87,12 +84,13 @@ final class ProfileViewController: BaseViewController, ViewModelContainerProtoco
         // Binding ViewModel output
         let output = viewModel.transform(input)
         name <~ output.name
-		login <~ output.login
+        login <~ output.login
         email <~ output.email
         bio <~ output.bio
         avatar <~ output.avatar
         isDarkSideChosen = output.isDarkSideChosed
         tableView.reactive.reloadData <~ output.shouldReloadInterface
+        showError <~ output.error
     }
 }
 

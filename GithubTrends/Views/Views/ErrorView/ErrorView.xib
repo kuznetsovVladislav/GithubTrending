@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -18,17 +17,20 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ErrorView" customModule="GithubTrends" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="57"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wzo-30-x2a">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="57"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="KFy-3n-f5D">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="57"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Some information about error message" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sSS-eC-ZZC">
-                                <rect key="frame" x="16" y="0.0" width="343" height="57"/>
+                                <rect key="frame" x="16" y="0.0" width="343" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="999" constant="50" id="Kzy-f6-2C8"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -47,17 +49,16 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="wzo-30-x2a" secondAttribute="trailing" id="714-Zb-ZZ0"/>
-                <constraint firstItem="wzo-30-x2a" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="QRq-DV-MOj"/>
-                <constraint firstItem="wzo-30-x2a" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="hRq-mZ-jq0"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="wzo-30-x2a" secondAttribute="bottom" id="qi7-QQ-yht"/>
+                <constraint firstItem="wzo-30-x2a" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="6Vj-jy-aBs"/>
+                <constraint firstAttribute="bottom" secondItem="wzo-30-x2a" secondAttribute="bottom" id="UXY-Y2-PpM"/>
+                <constraint firstAttribute="trailing" secondItem="wzo-30-x2a" secondAttribute="trailing" id="mnP-Km-I35"/>
+                <constraint firstItem="wzo-30-x2a" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="x5a-3j-J3w"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="messageLabel" destination="sSS-eC-ZZC" id="qPv-GE-i7R"/>
             </connections>
-            <point key="canvasLocation" x="34.5" y="-250.5"/>
+            <point key="canvasLocation" x="34.5" y="-277.5"/>
         </view>
     </objects>
 </document>

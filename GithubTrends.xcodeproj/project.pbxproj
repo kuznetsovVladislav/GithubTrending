@@ -44,6 +44,7 @@
 		8645042F1FDC2D8100C9C5B8 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8645042E1FDC2D8100C9C5B8 /* AuthViewModel.swift */; };
 		864504311FDC397C00C9C5B8 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864504301FDC397C00C9C5B8 /* AppTheme.swift */; };
 		864504331FDC3FBF00C9C5B8 /* Colors+Reactive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864504321FDC3FBF00C9C5B8 /* Colors+Reactive.swift */; };
+		864CD0791FDF02BA00C77EEC /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864CD0781FDF02BA00C77EEC /* UIView+Constraints.swift */; };
 		865546DF1FCC745300F260CB /* TrendsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865546DE1FCC745300F260CB /* TrendsService.swift */; };
 		86641E9E1FCF55560056827C /* ManagedTrending+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86641E9C1FCF55560056827C /* ManagedTrending+CoreDataClass.swift */; };
 		86641E9F1FCF55560056827C /* ManagedTrending+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86641E9D1FCF55560056827C /* ManagedTrending+CoreDataProperties.swift */; };
@@ -152,6 +153,7 @@
 		8645042E1FDC2D8100C9C5B8 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		864504301FDC397C00C9C5B8 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
 		864504321FDC3FBF00C9C5B8 /* Colors+Reactive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Colors+Reactive.swift"; sourceTree = "<group>"; };
+		864CD0781FDF02BA00C77EEC /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		865546DE1FCC745300F260CB /* TrendsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsService.swift; sourceTree = "<group>"; };
 		86641E9C1FCF55560056827C /* ManagedTrending+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ManagedTrending+CoreDataClass.swift"; sourceTree = "<group>"; };
 		86641E9D1FCF55560056827C /* ManagedTrending+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ManagedTrending+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -629,6 +631,7 @@
 			isa = PBXGroup;
 			children = (
 				86AABE051FD9983500E717C3 /* UIView+Extensions.swift */,
+				864CD0781FDF02BA00C77EEC /* UIView+Constraints.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -983,6 +986,7 @@
 				86865A4B1FD09F310008B32D /* User.swift in Sources */,
 				862BF7611FDC0A3100BAF4CF /* ManagedTrendingOwner+CoreDataProperties.swift in Sources */,
 				8615AEDB1FC74AF90099FBF7 /* Configuration.swift in Sources */,
+				864CD0791FDF02BA00C77EEC /* UIView+Constraints.swift in Sources */,
 				8645042C1FDC289000C9C5B8 /* WebViewViewController.swift in Sources */,
 				86865A531FD09F710008B32D /* ManagedUser+CoreDataProperties.swift in Sources */,
 				86641EA71FCF58DF0056827C /* Codable+Extensions.swift in Sources */,

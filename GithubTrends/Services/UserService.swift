@@ -28,7 +28,7 @@ final class UserService: UserServiceProtocol {
     }
     
     func fetchSelfUser() -> SignalProducer<User, BaseError> {
-        let endpoint = apiService.endpoint(Endpoint.user(username: "kuznetsovVladislav").path)
+        let endpoint = apiService.endpoint(Endpoint.selfUser.path)
         let request = apiService.session.request(endpoint, method: .get)
         return request.singleResponse()
     }
