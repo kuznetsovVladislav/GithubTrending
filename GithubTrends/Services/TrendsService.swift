@@ -46,7 +46,7 @@ final class TrendingsService: TrendingsServiceProtocol {
     func fetchTrendings(for language: String?, pagination: Pagination, savingToStore: Bool) -> SignalProducer<Slice<Trending>, BaseError> {
         let endpoint = apiService.endpoint(Path.repos)
         let parameters: [String: Any] = [
-            "q": "\(language ?? "All")",
+            "q": "\(language?.nilIfEmpty ?? "All")",
             "sort": "stars",
             "language": "\(language ?? "")",
             "page": pagination.page,

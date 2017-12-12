@@ -34,7 +34,8 @@ final class ProfileCoordinator: BaseCoordinator, CoordinatorProtocol {
             let profileViewController = profileNavigationController.viewControllers.first as? ProfileViewController else {
                 return
         }
-        let viewModel = ProfileViewModel(services: services, actions: ProfileViewModel.Actions(logoutAction: Action(execute: handleLogout)))
+        let actions = ProfileViewModel.Actions(logoutAction: Action(execute: handleLogout))
+        let viewModel = ProfileViewModel(services: services, actions: actions)
         profileViewController.viewModel = viewModel
         if tabBarController.viewControllers != nil {
             tabBarController.viewControllers?.append(profileNavigationController)
@@ -46,6 +47,10 @@ final class ProfileCoordinator: BaseCoordinator, CoordinatorProtocol {
     
 
     private func handleLogout() -> SignalProducer<(), NoError> {
-        return .empty
+        return SignalProducer { observer, disposable in
+         	self.containerController.changeFlow(to: .auth, animated: true)
+            observer.send(value: ())
+            observer.sendCompleted()
+        }
     }
 }

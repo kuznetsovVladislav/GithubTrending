@@ -15,4 +15,8 @@ struct Pagination {
     var next: Pagination {
         return Pagination(page: page + 1, perPage: perPage)
     }
+    
+    static var start: Pagination {
+        return Pagination(page: 1, perPage: 20)
+    }
 }

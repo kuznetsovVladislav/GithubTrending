@@ -45,6 +45,8 @@
 		864504311FDC397C00C9C5B8 /* AppTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864504301FDC397C00C9C5B8 /* AppTheme.swift */; };
 		864504331FDC3FBF00C9C5B8 /* Colors+Reactive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864504321FDC3FBF00C9C5B8 /* Colors+Reactive.swift */; };
 		864CD0791FDF02BA00C77EEC /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864CD0781FDF02BA00C77EEC /* UIView+Constraints.swift */; };
+		864CD07C1FE02CD700C77EEC /* ArrayTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864CD07B1FE02CD700C77EEC /* ArrayTableViewDataSource.swift */; };
+		864CD07E1FE0413900C77EEC /* ReactiveTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864CD07D1FE0413900C77EEC /* ReactiveTableViewDataSource.swift */; };
 		865546DF1FCC745300F260CB /* TrendsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865546DE1FCC745300F260CB /* TrendsService.swift */; };
 		86641E9E1FCF55560056827C /* ManagedTrending+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86641E9C1FCF55560056827C /* ManagedTrending+CoreDataClass.swift */; };
 		86641E9F1FCF55560056827C /* ManagedTrending+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86641E9D1FCF55560056827C /* ManagedTrending+CoreDataProperties.swift */; };
@@ -154,6 +156,8 @@
 		864504301FDC397C00C9C5B8 /* AppTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTheme.swift; sourceTree = "<group>"; };
 		864504321FDC3FBF00C9C5B8 /* Colors+Reactive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Colors+Reactive.swift"; sourceTree = "<group>"; };
 		864CD0781FDF02BA00C77EEC /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
+		864CD07B1FE02CD700C77EEC /* ArrayTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayTableViewDataSource.swift; sourceTree = "<group>"; };
+		864CD07D1FE0413900C77EEC /* ReactiveTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactiveTableViewDataSource.swift; sourceTree = "<group>"; };
 		865546DE1FCC745300F260CB /* TrendsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsService.swift; sourceTree = "<group>"; };
 		86641E9C1FCF55560056827C /* ManagedTrending+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ManagedTrending+CoreDataClass.swift"; sourceTree = "<group>"; };
 		86641E9D1FCF55560056827C /* ManagedTrending+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ManagedTrending+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -530,6 +534,15 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
+		864CD07A1FE02CAE00C77EEC /* Reactive */ = {
+			isa = PBXGroup;
+			children = (
+				864CD07D1FE0413900C77EEC /* ReactiveTableViewDataSource.swift */,
+				864CD07B1FE02CD700C77EEC /* ArrayTableViewDataSource.swift */,
+			);
+			path = Reactive;
+			sourceTree = "<group>";
+		};
 		865546E41FCC76CD00F260CB /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -559,6 +572,7 @@
 		869662061FCF719900C57B24 /* DataSources */ = {
 			isa = PBXGroup;
 			children = (
+				864CD07A1FE02CAE00C77EEC /* Reactive */,
 				869662071FCF720500C57B24 /* FetchedResults */,
 			);
 			path = DataSources;
@@ -983,6 +997,7 @@
 				869662131FCF774900C57B24 /* Collection+Extension.swift in Sources */,
 				8645042F1FDC2D8100C9C5B8 /* AuthViewModel.swift in Sources */,
 				86A49A8E1FDDBE210066FEFF /* FavouritedCoordinator.swift in Sources */,
+				864CD07E1FE0413900C77EEC /* ReactiveTableViewDataSource.swift in Sources */,
 				86865A4B1FD09F310008B32D /* User.swift in Sources */,
 				862BF7611FDC0A3100BAF4CF /* ManagedTrendingOwner+CoreDataProperties.swift in Sources */,
 				8615AEDB1FC74AF90099FBF7 /* Configuration.swift in Sources */,
@@ -993,6 +1008,7 @@
 				1F3BA4B71FC727D800E4265C /* BaseContainerControllerProtocol.swift in Sources */,
 				864504281FDC18DB00C9C5B8 /* GradientButton.swift in Sources */,
 				86FB435A1FCC93C000AD86CB /* Pagination.swift in Sources */,
+				864CD07C1FE02CD700C77EEC /* ArrayTableViewDataSource.swift in Sources */,
 				1F3BA4A61FC719AE00E4265C /* ViewModelContainerProtocol.swift in Sources */,
 				1F3BA4991FC7174200E4265C /* ServicesProvider.swift in Sources */,
 				86AABE0A1FD9B0D800E717C3 /* Fonts+Extensions.swift in Sources */,

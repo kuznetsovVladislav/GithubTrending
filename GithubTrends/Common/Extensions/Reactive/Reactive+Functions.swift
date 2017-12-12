@@ -23,3 +23,10 @@ extension Signal {
     }
 }
 
+extension MutablePropertyProtocol {
+    func bind<Element, S: SignalProducerConvertible>(appending values: S)
+        where S.Value == [Element], S.Value == Self.Value, S.Error == NoError
+    {
+        self <~ values.producer.withLatest(from: producer).map {$1 + $0}
+    }
+}

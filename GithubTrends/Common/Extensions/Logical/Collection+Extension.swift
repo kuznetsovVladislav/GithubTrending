@@ -55,3 +55,9 @@ extension Array {
         insert(removedObject, at: newIndex)
     }
 }
+
+extension String {
+    var nilIfEmpty: String? {
+        return isEmpty ? nil : self
+    }
+}

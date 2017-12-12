@@ -17,6 +17,9 @@ struct User: Codable {
     let avatar: String
     let url: String
     let bio: String?
+    var repos: Int
+    var followers: Int
+    var following: Int
     
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -27,6 +30,9 @@ struct User: Codable {
         case avatar = "avatar_url"
         case url = "html_url"
         case bio = "bio"
+        case repos = "public_repos"
+        case followers = "followers"
+        case following = "following"
     }
 }
 

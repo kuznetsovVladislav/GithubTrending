@@ -12,7 +12,6 @@ import CoreData
 
 @objc(ManagedUser)
 public final class ManagedUser: NSManagedObject, DomainConvertible {
-
     var asDomain: User {
         return User(
             id: Int(id),
@@ -22,7 +21,10 @@ public final class ManagedUser: NSManagedObject, DomainConvertible {
             location: location ?? "",
             avatar: avatarUrl ?? "",
             url: url ?? "",
-            bio: bio
+            bio: bio,
+            repos: Int(repos),
+            followers: Int(followers),
+            following: Int(following)
         )
     }
     
@@ -37,7 +39,9 @@ public final class ManagedUser: NSManagedObject, DomainConvertible {
         avatarUrl = domain.avatar
         url = domain.url
         bio = domain.bio
-    }
-    
+        repos = Int64(domain.repos)
+        followers = Int64(domain.followers)
+        following = Int64(domain.following)
+    }    
 }
 

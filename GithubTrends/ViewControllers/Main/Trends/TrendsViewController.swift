@@ -48,14 +48,14 @@ final class TrendsViewController: BaseViewController, ViewModelContainerProtocol
     
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
-    
+
     // MARK: - Variables
-    
-    private let cellViewModels: MutableProperty<[TrendingCellViewModel]> = .init([])
     
     private lazy var refreshControl: UIRefreshControl = setupRefreshControl()
     private lazy var selectionView: SelectionView = setupSelectionView()
-    let searchController = UISearchController(searchResultsController: nil)
+    private let searchController = UISearchController(searchResultsController: nil)
+    
+    private lazy var dataSource = ArrayTableViewDataSource<TrendingCellViewModel>(cellFactory: cellFactory())
     
     var popoverTopConstraint: NSLayoutConstraint?
     
@@ -74,11 +74,15 @@ final class TrendsViewController: BaseViewController, ViewModelContainerProtocol
         navigationItem.title = Constant.navigationTitle
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.largeTitleDisplayMode = .always
-        
-        let rightItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(rightItemAction(_:)))
-        navigationItem.rightBarButtonItem = rightItem
-        
         _ = refreshControl
+    }
+    
+    private func cellFactory() -> ArrayTableViewDataSource<TrendingCellViewModel>.CellFactory {
+        return { tableView, indexPath, cellViewModel in
+            let cell = tableView.dequeueReusableCell(cellClass: TrendingTVCell.self, for: indexPath)
+            cell.configure(with: cellViewModel)
+            return cell
+        }
     }
     
     private func setupTableView() {
@@ -119,29 +123,31 @@ final class TrendsViewController: BaseViewController, ViewModelContainerProtocol
     
     func didSet(_ viewModel: TrendingViewModel, for lifetime: Lifetime) {
         // Collecting view input
+        let cancelPressed = searchController.searchBar.reactive.cancelButtonClicked
+        let refreshControlToggled = refreshControl.reactive.controlEvents(.valueChanged).mapToVoid()
+        let retryLoading = Signal.merge(cancelPressed, refreshControlToggled).mapToVoid().take(during: lifetime)
         let rowSelection = reactive.rowSelection.map {$0.row}.take(during: lifetime)
-        let willDisplayNeededRow = self.willDisplayNeededRow(beforeLast: 3).take(during: lifetime)
+        let willDisplayNeededRow = self.willDisplayNeededRow(of: tableView, beforeLast: 3).take(during: lifetime)
         let searchBarInput = searchController.searchBar.reactive.continuousTextValues.skipNil().take(during: lifetime)
         
         let input = TrendingViewModel.Input(
+            retryLoading: retryLoading,
             rowSelection: rowSelection,
             willDisplayRowForPagination: willDisplayNeededRow,
             searchBarInput: searchBarInput)
         
         // Binding viewModel output
         let output = viewModel.transform(input)
-        activityIndicator.reactive.isHidden <~ output.isExecuting.negate()
+        activityIndicator.reactive.isHidden <~ output.isExecuting.negate().producer.take(first: 2)
         reactive.shouldShowNetworkActivity <~ output.isExecuting
         tableView.reactive.reloadData <~ output.requestCompleted
-		cellViewModels <~ output.cellViewModels
+        refreshControl.reactive.isRefreshing <~ output.requestCompleted.map {false}
+        output.cellViewModels.producer.bind(with: tableView.reactiveItems(dataSource: dataSource))
     }
 
-    private func willDisplayNeededRow(beforeLast rowSubscraction: Int) -> Signal<(), NoError> {
+    private func willDisplayNeededRow(of tableView: UITableView, beforeLast rowSubscraction: Int) -> Signal<(), NoError> {
         let willDisplayNeededRowSignal = reactive.rowDisplayingBeginning
-            .filter { [weak self] in
-                guard let `self` = self else { return false }
-                return $0.row == self.tableView.numberOfRows(inSection: 0) - rowSubscraction
-            }
+            .filter { return $0.row == tableView.numberOfRows(inSection: 0) - rowSubscraction }
             .mapToVoid()
         return willDisplayNeededRowSignal
     }
@@ -175,18 +181,18 @@ final class TrendsViewController: BaseViewController, ViewModelContainerProtocol
     }
 }
 
-// MARK: - UITableViewDataSource
-extension TrendsViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(cellClass: TrendingTVCell.self, for: indexPath)
-        cell.configure(with: cellViewModels.value[indexPath.row])
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cellViewModels.value.count
-    }
-}
+//// MARK: - UITableViewDataSource
+//extension TrendsViewController: UITableViewDataSource {
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(cellClass: TrendingTVCell.self, for: indexPath)
+//        cell.configure(with: cellViewModels.value[indexPath.row])
+//        return cell
+//    }
+//
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return cellViewModels.value.count
+//    }
+//}
 
 // MARK: - UITableViewDelegate
 extension TrendsViewController: UITableViewDelegate {

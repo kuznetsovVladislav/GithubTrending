@@ -14,17 +14,19 @@ import Result
 final class TrendingViewModel: ViewModelProtocol {
     
     typealias Services = TrendingsServiceProvider
+    typealias FetchAction = Action<(String?, Pagination, Bool), Slice<Trending>, BaseError>
     
     private let services: Services
-    
+    private let pagination: MutableProperty<Pagination> = .init(.start)
     private let cellViewModels: MutableProperty<[TrendingCellViewModel]> = .init([])
-    private let pagination: MutableProperty<Pagination> = .init(Pagination(page: 1, perPage: 20))
     
-    private lazy var fetchTrendingsAction = Action(execute: self.services.trendsService.fetchTrendings)
+    private lazy var fetchNextTrending = Action(execute: services.trendsService.fetchTrendings)
+    private lazy var reloadTrending = Action(execute: services.trendsService.fetchTrendings)
     
     // MARK: - ViewModelProtocol
     
     struct Input {
+        let retryLoading: Signal<(), NoError>
         let rowSelection: Signal<Int, NoError>
         let willDisplayRowForPagination: Signal<(), NoError>
         let searchBarInput: Signal<String, NoError>
@@ -41,25 +43,41 @@ final class TrendingViewModel: ViewModelProtocol {
     }
     
     func transform(_ input: TrendingViewModel.Input) -> TrendingViewModel.Output {
-        let mappedCellsActionSignal = fetchTrendingsAction.values.map {$0.items.map {TrendingCellViewModel(trending: $0)}}
-        let mappedPaginationActionSignal = fetchTrendingsAction.values.map {$0.pagination}
+        let nextTrendingViewModels = trendingViewModels(performing: fetchNextTrending)
+        let reloadedTrendingViewModels = trendingViewModels(performing: reloadTrending)
         
-        cellViewModels <~ mappedCellsActionSignal.producer
-        pagination <~ mappedPaginationActionSignal.producer
+        let nextTrendingPagintion = pagination(performing: fetchNextTrending)
+        let reloadedTrendingPagination = pagination(performing: reloadTrending)
         
-        fetchTrendingsAction.apply((nil, pagination.value, true)).start()
-        fetchTrendingsAction <~ input.searchBarInput
-            .map {($0, self.pagination.value, true)}
+        cellViewModels.bind(appending: nextTrendingViewModels.producer)
+        cellViewModels <~ reloadedTrendingViewModels.producer
+        pagination <~ nextTrendingPagintion.producer
+        pagination <~ reloadedTrendingPagination.producer
+        
+        fetchNextTrending.apply((nil, pagination.value, true)).start()
+        fetchNextTrending <~ input.willDisplayRowForPagination
+            .map {(nil, self.pagination.value.next, true)}
+        reloadTrending <~ input.searchBarInput
+            .map {($0, .start, true)}
             .debounce(0.3, on: QueueScheduler())
-        fetchTrendingsAction <~ input.willDisplayRowForPagination
-            .map {(nil, self.pagination.value, true)}
+        reloadTrending <~ input.retryLoading
+            .map({(nil, .start, true)})
         
-        let requestCompleted = fetchTrendingsAction.events.mapToVoid()
+        let requestCompleted = Signal.merge(fetchNextTrending.events, reloadTrending.events).mapToVoid()
+        let isExecuting = Property.combineLatest(fetchNextTrending.isExecuting, reloadTrending.isExecuting).map({$0 || $1})
         
         return Output(
             cellViewModels: cellViewModels,
             requestCompleted: requestCompleted,
-            isExecuting: fetchTrendingsAction.isExecuting
+            isExecuting: isExecuting
         )
+    }
+    
+    private func trendingViewModels(performing action: FetchAction) -> Signal<[TrendingCellViewModel], NoError> {
+        return action.values.map {$0.items.map {TrendingCellViewModel(trending: $0)}}
+    }
+    
+    private func pagination(performing action: FetchAction) -> Signal<Pagination, NoError> {
+        return action.values.map {$0.pagination}
     }
 }

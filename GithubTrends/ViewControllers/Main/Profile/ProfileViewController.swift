@@ -128,6 +128,7 @@ extension ProfileViewController: UITableViewDataSource {
         case .logout:
             let cell = tableView.dequeueReusableCell(cellClass: LabelTVCell.self, for: indexPath)
             cell.titleLabel.text = row.title
+            cell.selectionStyle = .default
             resultCell = cell
         }
         return resultCell
